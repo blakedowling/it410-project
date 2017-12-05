@@ -1,0 +1,81 @@
+.homeVideo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    top: 0;
+}
+.videoLoopContainer {
+    position: relative;
+    padding-top: 43.37%
+}
+.videoContent {
+    z-index: 99;
+    position: absolute;
+    bottom: 40px;
+    width: 768px;
+    display: block;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+.videoContent h1 {
+    /*background: rgba(0, 45, 93, .5);*/
+    text-shadow: 2px 1px black;
+    color: white;
+    font-size: 60px;
+}
+.videoContent button {
+    font-size: 24pt;
+    color: white;
+    background: #002d5d;
+    cursor: pointer;
+    border: 1px solid white;
+    padding: .2em .5em;
+}
+
+
+
+.siteTitle {
+    background: #002d5d;
+    color: white;
+    text-align: center;
+}
+.siteTitle h1 {
+    text-transform: uppercase;
+    margin: 0;
+    padding-top: .5rem;
+    letter-spacing: 1px;
+}
+
+.sportsDiv {
+    margin-bottom: 15px;
+}
+.sportsDiv .row a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    background-color: #002d5d;
+    font-size: 18pt;
+    padding: 10px 0 10px 40px;
+    border-top: 1px solid black;
+}
+.sportsDiv .row a:nth-child(n+1) {
+    border-right: 1px solid black;
+}
+
+@media screen and (max-width: 767px) {
+    .homeVideo, .videoContent {
+        display: none;
+    }
+    .videoLoopContainer {
+        background-image: url("/2-react-router/src/media/images/sports-camps.jpg");
+        background-size: contain;
+        background-position-x: 50%;
+        background-repeat: no-repeat;
+        /*position: relative;*/
+        padding-top: 55%;
+        /*margin-top: 57px;*/
+    }
+}

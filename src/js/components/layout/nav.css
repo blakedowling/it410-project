@@ -1,0 +1,207 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:400,500,400italic,300);
+body {
+    font-family: roboto;
+    background-color: #eeeeee;
+}
+
+/*.topNavbar, .ads, #sports-div, .no-padding, .individual-camp>div,*/
+/*#camp-info, #related-camps, #registration-info, #faq-info {*/
+/*    box-shadow: 0px 0px 2px #333;*/
+/*}*/
+.no-padding {
+    padding: 0;
+    background: white;
+}
+
+/***************************  NAVBAR  ***********************/
+.topNavbar {
+    position: absolute;
+    z-index: 100;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 60px;
+    background: #eeeeee;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 2px #333;
+}
+.topNavbar ul {
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+.topNavbar li {
+    padding: 0;
+}
+.topNavbar .camps {
+    float: right;
+    height: 100%;
+    background: #003da7;
+    color: white;
+    font-size: 28px;
+    display: block;
+    text-align: center;
+}
+
+.headerLeftItems {
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.headerLeftItems:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 5px solid #003da7;
+
+}
+
+.headerLeftItems.active a {
+    background-color: #002d5d;
+    color: white;
+}
+.headerLeftItems.active a:hover {
+    color: white;
+}
+.headerLeftItems a {
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 12pt;
+    color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.headerLeftItems a:hover {
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    color: black;
+    height: 100%;
+}
+.dropbtn {
+    /*color:white;*/
+    padding: 0 .5em;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.dropbtn:hover {
+    cursor: pointer;
+    text-decoration: none;
+    /*color: white;*/
+}
+.dropbtn:visited {
+    text-decoration: none;
+}
+
+.dropdownContent {
+    display: block;
+    visibility: hidden;
+    transition: visibility 0s ease-in-out 0.1s;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownContent a {
+    font-size: 10pt;
+    color: black;
+    padding: .4em 1em;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdownContent a:hover {
+    background-color: #A9A9A9;
+    
+}
+
+.dropdown:hover .dropdownContent {
+    visibility: visible;
+}
+.logos {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+}
+.logos a {
+    display: flex;
+    padding-right: .5em;
+}
+.topNavbar img {
+    height: 40px;
+}
+.topNavbar .siteLogo {
+    height: 55px;
+}
+
+/*********************** MOBILE NAVBAR *******************/
+.posFT {
+    display: none;
+}
+.mobileNav {
+    background: #002d5d;
+    border-bottom: 1px solid black;
+}
+.navbar-inverse .navbar-toggler {
+    border-color: rgba(255,255,255,.5);
+}
+.navbar-inverse .navbar-toggler:hover {
+    cursor: pointer;
+}
+.mobileNavUl {
+    background: #eeeeee;
+    list-style-type: none;
+    margin: 0;
+    text-transform: uppercase;
+    padding-left: 0;
+}
+.mobileNavUl li {
+    padding: .5em 0 .5em 20px;
+}
+.mobileNavUl li+li {
+    border-top: 1px solid black;
+}
+
+@media screen and (max-height: 767px) {
+    .dropdownContent {
+        max-height: 400px;
+        overflow: scroll;
+    }
+}
+@media screen and (max-height: 479px) {
+    .dropdownContent {
+        max-height: 250px;
+        overflow: scroll;
+    }
+}
+@media screen and (max-width: 850px) {
+    .headerLeftItems a {
+        padding-left: .8em;
+        padding-right: .8em;
+        font-size: 11pt;
+    }
+}
+@media screen and (max-width: 767px) {
+    .topNavbar {
+        display: none;
+    }
+    .posFT {
+        display: block;
+    }
+}
