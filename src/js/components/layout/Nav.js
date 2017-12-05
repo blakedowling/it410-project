@@ -97,7 +97,7 @@ export default class Nav extends React.Component {
         			<div className={ styles.dropdownContent }>
         			  <a href="#">Counselors</a>
       					<a href="#">Lodging</a>
-      					<a href="#">FAQ</a>
+      					<Link to="FAQ">FAQ</Link>
     			    </div>
       			</div>
       			<li className={ styles.headerLeftItems }><a>Contact</a></li>
@@ -123,12 +123,19 @@ export default class Nav extends React.Component {
           <div className={"navbar-collapse " + navClass} id="navbarToggleExternalContent">
             <ul className={styles.mobileNavUl}>
               <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>Home</Link></li>
-              <li>Camps</li>
+              <li><Link to="/">Camps</Link></li>
               <li><Link to="registration" onClick={this.toggleCollapse.bind(this)}>Register</Link></li>
-              <li>Calendar</li>
-              <li>General Info</li>
-              <li>Counselors</li>
-              <li>Contact</li>
+              <li><Link to="archives" onClick={this.toggleCollapse.bind(this)}>Calendar</Link></li>
+              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>General Info</Link></li>
+              <div className={"navbar-collapse " + navClass} id="secondToggleExternalContent">
+                <ul>
+                  <li>Counselors</li>
+                  <li>Lodging</li>
+                  <li>FAQ</li>
+                </ul>
+              </div>
+              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>Counselors</Link></li>
+              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>Contact</Link></li>
             </ul>
           </div>
         </div>

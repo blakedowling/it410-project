@@ -1,0 +1,20 @@
+.faqInfo {
+    background: white;
+    padding-bottom: 10px;
+    box-shadow: 0px 0px 2px #333;
+}
+.faqInfo h1 {
+    border-bottom: 1px solid #dbddd3;
+    padding: 10px 0;
+    color: #002d5d;
+}
+.faqBanner {
+    background: url('/2-react-router/src/media/images/byu_football_royal.jpg');
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 45px;
+}
+.question {
+    color: #002d5d;
+}

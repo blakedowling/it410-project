@@ -4,7 +4,6 @@ import { Link } from "react-router";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 
-import Article from "../components/Article";
 import Ads from "../components/Ads";
 import Tint from "../components/Tint";
 
@@ -34,7 +33,7 @@ export default class Home extends React.Component {
   render() {
     var sports = [];
     this.state.data.forEach(item => {
-      var link = 'sports/' + item.tid;
+      var link = 'sports/' + item.name + "/" + item.tid;
       sports.push(
         <Link key={item.tid} to={link} className={"col-md-6 col-xs-12"}>{item.name}</Link>
       )
@@ -82,8 +81,11 @@ export default class Home extends React.Component {
               {sports}
             </div>
         </div>
-        <Tint/>
       </div>
     );
   }
 }
+
+// $(document).ready(function() {
+//   $('section').html('<h3>Social Media Feed</h3><div><script src="https://cdn.hypemarks.com/pages/a5b5e5.js" async></script><div class="tintup" data-id="byu-sports-camps" data-columns="" data-expand="true" data-mobilescroll="true" data-infinitescroll="true" data-personalization-id="875963"></div></div>');
+// });

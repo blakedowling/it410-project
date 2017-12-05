@@ -9,6 +9,7 @@ import Layout from "./pages/Layout";
 import Settings from "./pages/Settings";
 import Sports from "./pages/Sports";
 import Camps from "./pages/Camps";
+import FAQ from "./pages/FAQ";
 
 const app = document.getElementById('app');
 
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Route path="/" component={Layout}>
       <IndexRoute component={Home}></IndexRoute>
       <Route path="archives(/:article)" name="archives" component={Archives}></Route>
+      <Route path="faq" name="faq" component={FAQ}></Route>
       <Route path="settings" name="settings" component={Settings}></Route>
       <Route path="registration" name="registration" component={Registration}></Route>
       <Route path="sports(/:sport/:sportid)" name="sport" component={Sports}></Route>

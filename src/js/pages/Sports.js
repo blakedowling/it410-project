@@ -23,8 +23,8 @@ export default class Sports extends React.Component {
                 console.log(response.data);
                 th.setState({
                     data: response.data
-            });
-        })
+                });
+        }.bind(this))
         .catch(function(error) {
             console.log(error);
         });
@@ -33,16 +33,16 @@ export default class Sports extends React.Component {
         this.mountOrUpdate();
     }
     componentWillReceiveProps(nextProps) {
-        if(this.props.params.sportid == nextProps.params.sportid) {
-            console.log('props changing');
-            this.mountOrUpdate();
-        }
+        // if(this.props.params.sportid == nextProps.params.sportid) {
+        console.log('props changing');
+        this.mountOrUpdate();
+        // }
         
     }
-    componentWillUnmount() {
-        console.log('unmounting ' + this.serverRequest);
-        this.serverRequest.abort();
-    }
+    // componentWillUnmount() {
+    //     console.log('unmounting ' + this.serverRequest);
+    //     this.serverRequest.abort();
+    // }
 
     render() {
         var camps = [];
