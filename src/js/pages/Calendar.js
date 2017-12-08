@@ -56,6 +56,25 @@ export default class Camps extends React.Component {
                 <div className={ styles.scheduleBanner }>
                     <div className={"container " + styles.scheduleInfo}>
                         <h1 className={"text-center"}>All Camps Schedule</h1>
+                        <div className={styles.filterDiv}>
+                            <select name="months" className={styles.months}>
+                                <option value="">-------Filter by Month-------</option>
+                                <option value="Jan">January</option>
+                                <option value="Feb">February</option>
+                                <option value="Mar">March</option>
+                                <option value="Apr">April</option>
+                                <option value="May">May</option>
+                                <option value="Jun">June</option>
+                                <option value="Jul">July</option>
+                                <option value="Aug">August</option>
+                                <option value="Sep">September</option>
+                                <option value="Oct">October</option>
+                                <option value="Nov">November</option>
+                                <option value="Dec">December</option>
+                            </select>
+                            <span className={styles.apply + " btn-raised btn btn-default"}>Apply</span>
+                            <span className={styles.apply + " btn-raised btn btn-default"} >Clear</span>
+                        </div>
                         {camps}
                     </div>
                 </div>
