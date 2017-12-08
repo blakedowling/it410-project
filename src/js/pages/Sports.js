@@ -15,7 +15,7 @@ export default class Sports extends React.Component {
     }
     
     mountOrUpdate() {
-        // console.log(this.props);
+        console.log(this.props.showMe);
         var URL = "https://byucougars.com/dl/feeds/allcampspersport/" + this.props.params.sportid;
         var th = this;
         this.serverRequest = axios.get(URL)
@@ -75,12 +75,12 @@ export default class Sports extends React.Component {
     return (
         <div>
             <DemoCarousel/>
-            <Ads/>
             <div className={ "container-fluid" }>
                 <div className={ "row" }>
                     {camps}
                 </div>
             </div>
+            <Ads/>
         </div>
     );
   }

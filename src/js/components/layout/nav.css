@@ -177,7 +177,7 @@ body {
     background-color: #A9A9A9;
     text-decoration: none;
 }
-.mobileNavUl li+li {
+.mobileNavUl > li {
     border-top: 1px solid black;
 }
 .mobileNavUl a {
@@ -186,8 +186,10 @@ body {
     display:inline-block;
     color:black;
 }
-
-@media screen and (max-height: 767px) {
+.mobileNavUl div li+li {
+    border-top: 1px solid black;
+}
+@media screen and (max-height: 720px) {
     .dropdownContent {
         max-height: 400px;
         overflow: scroll;

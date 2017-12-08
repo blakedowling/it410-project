@@ -8,6 +8,17 @@
 .registrationInfo {
     box-shadow: 0px 0px 2px #333;
     background: white;
+    padding-bottom: 5px;
+}
+.contactInfo {
+    box-shadow: 0px 0px 2px #333;
+    background: white;
+    padding-bottom: 5px;
+}
+.contactInfo h1 {
+    border-bottom: 1px solid #dbddd3;
+    padding: 10px 0;
+    color: #002d5d;
 }
 
 .registrationInfo h1 {
@@ -29,5 +40,12 @@ table thead tr th {
 @media screen and (max-width: 767px) {
     .registrationBanner {
         padding-top: 20px;
+    }
+}
+@media screen and (max-width: 575px) {
+    .registrationBanner {
+        background: none;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }

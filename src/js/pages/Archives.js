@@ -4,6 +4,9 @@ import Article from "../components/Article";
 
 export default class Archives extends React.Component {
   render() {
+    const page = {
+      margin: "100px 30px 30px"
+    };
     const { query } = this.props.location;
     const { params } = this.props;
     const { article } = params;
@@ -21,8 +24,8 @@ export default class Archives extends React.Component {
     ].map((title, i) => <Article key={i} title={title}/> );
 
     return (
-      <div>
-        <h1>Archives</h1>
+      <div style={page}>
+        <h1>Calendar</h1>
         article: {article}, date: {date}, filter: {filter}
         <div class="row">{Articles}</div>
       </div>

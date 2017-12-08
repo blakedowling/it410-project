@@ -10,6 +10,9 @@ import Settings from "./pages/Settings";
 import Sports from "./pages/Sports";
 import Camps from "./pages/Camps";
 import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import Lodging from "./pages/Lodging";
+import Calendar from "./pages/Calendar";
 
 const app = document.getElementById('app');
 
@@ -23,6 +26,9 @@ ReactDOM.render(
       <Route path="registration" name="registration" component={Registration}></Route>
       <Route path="sports(/:sport/:sportid)" name="sport" component={Sports}></Route>
       <Route path="camps(/:campid)" name="camp" component={Camps}></Route>
+      <Route path="contact" name="contact" component={Contact}></Route>
+      <Route path="lodging" name="lodging" component={Lodging}></Route>
+      <Route path="calendar" name="calendar" component={Calendar}></Route>
     </Route>
   </Router>,
 app);

@@ -99,3 +99,10 @@
         padding-top: 20px;
     }
 }
+@media screen and (max-width: 575px) {
+    .campBanner {
+        background: none;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

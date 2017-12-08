@@ -9,6 +9,8 @@ export default class Nav extends React.Component {
     super(props);
     this.state = {
       collapsed: true,
+      campsCollapsed: true,
+      generalCollapsed: true,
       data: []
     };
   }
@@ -18,6 +20,7 @@ export default class Nav extends React.Component {
     this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps")
       .then(function(response) {
         console.log(response.data);
+        console.log(th.state);
         th.setState({
           data: response.data
       });
@@ -27,80 +30,74 @@ export default class Nav extends React.Component {
     });
   }
 
+  collapseAll() {
+    this.setState({
+      collapsed: true,
+      campsCollapsed: true,
+      generalCollapsed: true
+    });
+  }
+
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState({collapsed});
+  }
+  toggleCampsCollapse() {
+    const campsCollapsed = !this.state.campsCollapsed;
+    this.setState({campsCollapsed});
+  }
+  toggleGeneralCollapse() {
+    const generalCollapsed = !this.state.generalCollapsed;
+    this.setState({generalCollapsed});
   }
 
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
+    const { generalCollapsed } = this.state;
+    const { campsCollapsed } = this.state;
     const homeClass = location.pathname === "/" ? styles.active : "";
     const calendarClass = location.pathname.match(/^\/archives/) ? styles.active : "";
     const campClass = location.pathname.match(/^\/sport/) || location.pathname.match(/^\/camp/) ? styles.active : "";
     const registrationClass = location.pathname.match(/^\/registration/) ? styles.active : "";
     const navClass = collapsed ? "collapse" : "";
+    const campsNav = campsCollapsed ? "collapse" : "";
+    const generalNav = generalCollapsed ? "collapse" : "";
     
     var desktopSports = [];
-    var mobilesports = [];
+    var mobileSports = [];
     this.state.data.forEach(item => {
       var link = 'sports/' + item.name + "/" + item.tid;
       desktopSports.push(
         <Link key={item.tid} to={link}>{item.name}</Link>
       );
-      mobilesports.push(
-        
+      mobileSports.push(
+        <li key={item.tid}><Link to={link} onClick={this.collapseAll.bind(this)}>{item.name}</Link></li>
       );
     });
     
     return (
-      // <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      //   <div class="container">
-      //     <div class="navbar-header">
-      //       <button type="button" class="navbar-toggle" onClick={this.toggleCollapse.bind(this)} >
-      //         <span class="sr-only">Toggle navigation</span>
-      //         <span class="icon-bar"></span>
-      //         <span class="icon-bar"></span>
-      //         <span class="icon-bar"></span>
-      //       </button>
-      //     </div>
-      //     <div class={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
-      //       <ul class="nav navbar-nav">
-      //         <li class={featuredClass}>
-      //           <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Featured</IndexLink>
-      //         </li>
-      //         <li class={archivesClass}>
-      //           <Link to="archives" onClick={this.toggleCollapse.bind(this)}>Archives</Link>
-      //         </li>
-      //         <li class={settingsClass}>
-      //           <Link to="settings" onClick={this.toggleCollapse.bind(this)}>Settings</Link>
-      //         </li>
-      //       </ul>
-      //     </div>
-      //   </div>
-      // <li className={ styles.headerLeftItems }><Link to="settings">Settings</Link></li>
-      // </nav>
       <div>
         <nav className={ styles.topNavbar }>
           <ul>
       			<li className={ styles.headerLeftItems + " " + homeClass }><Link to="/"><img className={ styles.siteLogo }src="media/images/BYUlogo_stroke400.png" alt="BYU Logo"/></Link></li>
-      			<div className={ styles.dropdown }>
+      			<section className={ styles.dropdown }>
           		<li className={ styles.headerLeftItems + " " + campClass }><a className={ styles.dropbtn }>Camps</a></li>
-          		<div className={ styles.dropdownContent }>
+          		<article className={ styles.dropdownContent }>
           		  {desktopSports}
-      				</div>
-      			</div>
+      				</article>
+      			</section>
       			<li className={ styles.headerLeftItems + " " + registrationClass }><Link to="registration">Registration</Link></li>
-      			<li className={ styles.headerLeftItems + " " + calendarClass }><Link to="archives">Calendar</Link></li>
-      			<div className={ styles.dropdown }>
+      			<li className={ styles.headerLeftItems + " " + calendarClass }><Link to="calendar">Calendar</Link></li>
+      			<section className={ styles.dropdown }>
         			<li className={ styles.headerLeftItems }><a className={ styles.dropbtn }>General Info</a></li>
-        			<div className={ styles.dropdownContent }>
+        			<article className={ styles.dropdownContent }>
         			  <a href="#">Counselors</a>
-      					<a href="#">Lodging</a>
+      					<Link to="lodging">Lodging</Link>
       					<Link to="FAQ">FAQ</Link>
-    			    </div>
-      			</div>
-      			<li className={ styles.headerLeftItems }><a>Contact</a></li>
+    			    </article>
+      			</section>
+      			<li className={ styles.headerLeftItems }><Link to="contact">Contact</Link></li>
       		</ul>
       		
       		<div className={ styles.logos }>
@@ -116,26 +113,31 @@ export default class Nav extends React.Component {
         
         <div className={styles.posFT}>
           <div className={"navbar navbar-inverse " + styles.mobileNav}>
-            <button className={"navbar-toggler"} onClick={this.toggleCollapse.bind(this)} type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className={"navbar-toggler"} onClick={this.toggleCollapse.bind(this)} type="button" aria-expanded="false" aria-label="Toggle navigation">
               <span className={"navbar-toggler-icon"}></span>
             </button>
           </div>
           <div className={"navbar-collapse " + navClass} id="navbarToggleExternalContent">
             <ul className={styles.mobileNavUl}>
-              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>Home</Link></li>
-              <li><Link to="/">Camps</Link></li>
-              <li><Link to="registration" onClick={this.toggleCollapse.bind(this)}>Register</Link></li>
-              <li><Link to="archives" onClick={this.toggleCollapse.bind(this)}>Calendar</Link></li>
-              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>General Info</Link></li>
-              <div className={"navbar-collapse " + navClass} id="secondToggleExternalContent">
+              <li><Link to="/" onClick={this.collapseAll.bind(this)}>Home</Link></li>
+              <li><Link to="" onClick={this.toggleCampsCollapse.bind(this)}>Camps</Link></li>
+              <div className={"navbar-collapse " + campsNav}>
                 <ul>
-                  <li>Counselors</li>
-                  <li>Lodging</li>
-                  <li>FAQ</li>
+                  {mobileSports}
                 </ul>
               </div>
-              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>Counselors</Link></li>
-              <li><Link to="/" onClick={this.toggleCollapse.bind(this)}>Contact</Link></li>
+              <li><Link to="registration" onClick={this.collapseAll.bind(this)}>Register</Link></li>
+              <li><Link to="calendar" onClick={this.collapseAll.bind(this)}>Calendar</Link></li>
+              <li><Link to="" onClick={this.toggleGeneralCollapse.bind(this)}>General Info</Link></li>
+              <div className={"navbar-collapse " + generalNav}>
+                <ul>
+                  <li><Link to="/" onClick={this.collapseAll.bind(this)}>Counselors</Link></li>
+                  <li><Link to="lodging" onClick={this.collapseAll.bind(this)}>Lodging</Link></li>
+                  <li><Link to="FAQ" onClick={this.collapseAll.bind(this)}>FAQ</Link></li>
+                </ul>
+              </div>
+              <li><Link to="/" onClick={this.collapseAll.bind(this)}>Counselors</Link></li>
+              <li><Link to="contact" onClick={this.collapseAll.bind(this)}>Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -145,11 +147,27 @@ export default class Nav extends React.Component {
 }
 
 $(document).ready(function() {
+    // pins navbar to top of screen upon scroll above 20
     $(window).scroll(function () {
       if ($(this).scrollTop() > 20) {
         $('nav').css({"position" : "fixed", "width" : "100%", "top": "0", "left": "0"});
       } else {
         $('nav').css({"position" : "absolute", "width" : "calc(100% - 40px)", "top": "20px", "left": "20px"});
       }
+    });
+    // click function for all content - loaded statically and dynamically
+    $(document).on("click", "a", function(e) {
+        console.log("log something");
+        $('article').css('visibility', 'hidden');
+        return false;
+    });
+    // makes dropdown article visible/hidden on mouseenter/leave of section 
+    $('section').on("mouseenter", function(e) {
+        $(this).children('article').css('visibility', 'visible');
+        return false;
+    });
+    $('section').on("mouseleave", function(e) {
+        $(this).children('article').css('visibility', 'hidden');
+        return false;
     });
 });

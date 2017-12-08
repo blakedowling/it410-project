@@ -18,3 +18,15 @@
 .question {
     color: #002d5d;
 }
+@media screen and (max-width: 767px) {
+    .faqBanner {
+        padding-top: 20px;
+    }
+}
+@media screen and (max-width: 575px) {
+    .faqBanner {
+        background: none;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
