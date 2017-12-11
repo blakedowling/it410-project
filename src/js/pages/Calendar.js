@@ -5,7 +5,7 @@ import Ads from "../components/Ads";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 
-export default class Camps extends React.Component {
+export default class Calendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -27,9 +27,36 @@ export default class Camps extends React.Component {
             console.log(error);
         });
     }
-    // componentWillUnmount() {
-    //     this.serverRequest.abort();
-    // }
+    
+    changeMonth() {
+        var th = this;
+        var monthSelector = document.querySelector('select');
+        var month = monthSelector.options[monthSelector.selectedIndex].value;
+        var URL = "https://byucougars.com/dl/feeds/sc-schedule/" + month;
+        console.log(month);
+        this.serverRequest = axios.get(URL).then(function(response) {
+            th.setState({
+                data: response.data
+            });
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
+    clearMonth() {
+        var th = this;
+        var URL = "https://byucougars.com/dl/feeds/sc-schedule";
+        document.querySelector('select').selectedIndex = 0;
+        this.serverRequest = axios.get(URL).then(function(response) {
+            th.setState({
+                data: response.data
+            });
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
+    
     render() {
         var camps = [];
         var link;
@@ -59,21 +86,21 @@ export default class Camps extends React.Component {
                         <div className={styles.filterDiv}>
                             <select name="months" className={styles.months}>
                                 <option value="">-------Filter by Month-------</option>
-                                <option value="Jan">January</option>
-                                <option value="Feb">February</option>
-                                <option value="Mar">March</option>
-                                <option value="Apr">April</option>
-                                <option value="May">May</option>
-                                <option value="Jun">June</option>
-                                <option value="Jul">July</option>
-                                <option value="Aug">August</option>
-                                <option value="Sep">September</option>
-                                <option value="Oct">October</option>
-                                <option value="Nov">November</option>
-                                <option value="Dec">December</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
                             </select>
-                            <span className={styles.apply + " btn-raised btn btn-default"}>Apply</span>
-                            <span className={styles.apply + " btn-raised btn btn-default"} >Clear</span>
+                            <span className={styles.apply + " btn-raised btn btn-default"} onClick={this.changeMonth.bind(this)}>Apply</span>
+                            <span className={styles.apply + " btn-raised btn btn-default"} onClick={this.clearMonth.bind(this)}>Clear</span>
                         </div>
                         {camps}
                     </div>
