@@ -23,7 +23,6 @@ export default class Camps extends React.Component {
         var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid
         this.serverRequest = axios.get(URL).then(function(response) {
             const data = response.data[0];
-            console.log(response);
             th.setState({
                 title: data.title,
                 when: data.field_event_date,
@@ -41,6 +40,13 @@ export default class Camps extends React.Component {
     //     this.serverRequest.abort();
     // }
     render() {
+        var register;
+        if(this.state.registration_url != '') {
+            register = <button><a href={this.state.registration_url} target="_blank">Register</a></button>;
+        } else {
+            register = <h3 className={styles.noRegistration + " text-center"}>Registration for this camp is not yet open</h3>;
+        }
+        
         return (
             <div>
                 <div className={ styles.campBanner }>
@@ -52,41 +58,7 @@ export default class Camps extends React.Component {
                             <div><h4>Price:</h4><h6>{this.state.price}</h6></div>
                         </div>
                         {renderHTML(this.state.body)}
-                        <button><a href={this.state.registration_url} target="_blank">Register</a></button>
-                    </div>
-                </div>
-            
-                <div className={ styles.relatedCamps + ' container' }>
-                    <h3 className={"text-center"}>Related Camps</h3>
-                    <div className={ styles.relatedCampFlex }>
-                        <div className={styles.relatedCamp}>
-                            <h4>Cubs Camp 1</h4>
-                            <h6>June 9-10, 2018</h6>
-                            <h6>Boys Entering Grades 6-8</h6>
-                            <h6>$500</h6>
-                            <button><a href="">Learn More</a></button>
-                        </div>
-                        <div className={styles.relatedCamp}>
-                            <h4>Cubs Camp 2</h4>
-                            <h6>June 16-17, 2018</h6>
-                            <h6>Boys Entering Grades 6-8</h6>
-                            <h6>$500</h6>
-                            <button><a href="">Learn More</a></button>
-                        </div>
-                        <div className={styles.relatedCamp}>
-                            <h4>Skills & Agility Clinic</h4>
-                            <h6>June 23-24, 2018</h6>
-                            <h6>Boys Entering Grades 6-8</h6>
-                            <h6>$500</h6>
-                            <button><a href="">Learn More</a></button>
-                        </div>
-                        <div className={styles.relatedCamp}>
-                            <h4>Middle School</h4>
-                            <h6>June 27-30, 2018</h6>
-                            <h6>Boys Entering Grades 6-8</h6>
-                            <h6>$1,000</h6>
-                            <button><a href="">Learn More</a></button>
-                        </div>
+                        {register}
                     </div>
                 </div>
                 <Ads/>

@@ -59,9 +59,15 @@ export default class Calendar extends React.Component {
     
     render() {
         var camps = [];
+        var register;
         var link;
         this.state.data.forEach(item => {
             link = 'camps/' + item.nid;
+            if(item.field_registration_url == '') {
+                register = <h5>Registration not open</h5>;
+            } else {
+                register = <h5><a href={item.field_registration_url}>Register</a></h5>;
+            }
             camps.push(
                 <section key={item.nid} className={styles.row + " row"}>
                     <div className={styles.date + " col-sm-3"}>
@@ -73,11 +79,13 @@ export default class Calendar extends React.Component {
                         <div><h5>Price: {item.field_price}</h5></div>
                     </div>
                     <div className={styles.register + " col-sm-3"}>
-                        <h5><a href={item.field_registration_url}>Register</a></h5>
+                        { register }
                     </div>
                 </section>
             );
+            
         });
+        
         return (
             <div>
                 <div className={ styles.scheduleBanner }>

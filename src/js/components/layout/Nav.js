@@ -10,7 +10,7 @@ export default class Nav extends React.Component {
     this.state = {
       collapsed: true,
       campsCollapsed: true,
-      generalCollapsed: true,
+      moreCollapsed: true,
       data: []
     };
   }
@@ -19,8 +19,6 @@ export default class Nav extends React.Component {
     var th = this;
     this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps")
       .then(function(response) {
-        console.log(response.data);
-        console.log(th.state);
         th.setState({
           data: response.data
       });
@@ -34,7 +32,7 @@ export default class Nav extends React.Component {
     this.setState({
       collapsed: true,
       campsCollapsed: true,
-      generalCollapsed: true
+      moreCollapsed: true
     });
   }
 
@@ -46,23 +44,25 @@ export default class Nav extends React.Component {
     const campsCollapsed = !this.state.campsCollapsed;
     this.setState({campsCollapsed});
   }
-  toggleGeneralCollapse() {
-    const generalCollapsed = !this.state.generalCollapsed;
-    this.setState({generalCollapsed});
+  toggleMoreCollapse() {
+    const moreCollapsed = !this.state.moreCollapsed;
+    this.setState({moreCollapsed});
   }
 
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
-    const { generalCollapsed } = this.state;
+    const { moreCollapsed } = this.state;
     const { campsCollapsed } = this.state;
     const homeClass = location.pathname === "/" ? styles.active : "";
-    const calendarClass = location.pathname.match(/^\/archives/) ? styles.active : "";
+    const calendarClass = location.pathname.match(/^\/calendar/) ? styles.active : "";
     const campClass = location.pathname.match(/^\/sport/) || location.pathname.match(/^\/camp/) ? styles.active : "";
-    const registrationClass = location.pathname.match(/^\/registration/) ? styles.active : "";
+    const registrationClass = location.pathname.match(/^\/page\/registration/) ? styles.active : "";
+    const moreClass = location.pathname.match(/^\/page\/general info/) || location.pathname.match(/^\/page\/counselors/) || location.pathname.match(/^\/page\/FAQ/) || location.pathname.match(/^\/page\/lodging/) ? styles.active : "";
+    const contactClass = location.pathname.match(/^\/page\/contact/) ? styles.active : "";
     const navClass = collapsed ? "collapse" : "";
     const campsNav = campsCollapsed ? "collapse" : "";
-    const generalNav = generalCollapsed ? "collapse" : "";
+    const generalNav = moreCollapsed ? "collapse" : "";
     
     var desktopSports = [];
     var mobileSports = [];
@@ -87,17 +87,18 @@ export default class Nav extends React.Component {
           		  {desktopSports}
       				</article>
       			</section>
-      			<li className={ styles.headerLeftItems + " " + registrationClass }><Link to="registration">Registration</Link></li>
+      			<li className={ styles.headerLeftItems + " " + registrationClass }><Link to="page/registration/1282926">Registration</Link></li>
       			<li className={ styles.headerLeftItems + " " + calendarClass }><Link to="calendar">Calendar</Link></li>
+      			<li className={ styles.headerLeftItems + " " + contactClass }><Link to="page/contact/1282928">Contact</Link></li>
       			<section className={ styles.dropdown }>
-        			<li className={ styles.headerLeftItems }><a className={ styles.dropbtn }>General Info</a></li>
+        			<li className={ styles.headerLeftItems + " " + moreClass }><Link to="" className={ styles.dropbtn }>More</Link></li>
         			<article className={ styles.dropdownContent }>
-        			  <a href="#">Counselors</a>
-      					<Link to="lodging">Lodging</Link>
-      					<Link to="FAQ">FAQ</Link>
+        			  <Link to="page/general info/1282927" className={ styles.dropbtn }>General Info</Link>
+        			  <Link to="page/counselors/1282929">Counselors</Link>
+      					<Link to="page/lodging/1282930">Lodging</Link>
+      					<Link to="page/FAQ/1282931">FAQ</Link>
     			    </article>
       			</section>
-      			<li className={ styles.headerLeftItems }><Link to="contact">Contact</Link></li>
       		</ul>
       		
       		<div className={ styles.logos }>
@@ -126,18 +127,18 @@ export default class Nav extends React.Component {
                   {mobileSports}
                 </ul>
               </div>
-              <li><Link to="registration" onClick={this.collapseAll.bind(this)}>Register</Link></li>
+              <li><Link to="page/registration/1282926" onClick={this.collapseAll.bind(this)}>Register</Link></li>
               <li><Link to="calendar" onClick={this.collapseAll.bind(this)}>Calendar</Link></li>
-              <li><Link to="" onClick={this.toggleGeneralCollapse.bind(this)}>General Info</Link></li>
+              <li><Link to="page/contact/1282928" onClick={this.collapseAll.bind(this)}>Contact</Link></li>
+              <li><Link to="" onClick={this.toggleMoreCollapse.bind(this)}>More</Link></li>
               <div className={"navbar-collapse " + generalNav}>
                 <ul>
-                  <li><Link to="/" onClick={this.collapseAll.bind(this)}>Counselors</Link></li>
-                  <li><Link to="lodging" onClick={this.collapseAll.bind(this)}>Lodging</Link></li>
-                  <li><Link to="FAQ" onClick={this.collapseAll.bind(this)}>FAQ</Link></li>
+                  <li><Link to="page/general" onClick={this.collapseAll.bind(this)}>General Info</Link></li>
+                  <li><Link to="page/counselors/1282929" onClick={this.collapseAll.bind(this)}>Counselors</Link></li>
+                  <li><Link to="page/lodging/1282930" onClick={this.collapseAll.bind(this)}>Lodging</Link></li>
+                  <li><Link to="page/FAQ/1282931" onClick={this.collapseAll.bind(this)}>FAQ</Link></li>
                 </ul>
               </div>
-              <li><Link to="/" onClick={this.collapseAll.bind(this)}>Counselors</Link></li>
-              <li><Link to="contact" onClick={this.collapseAll.bind(this)}>Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -157,7 +158,7 @@ $(document).ready(function() {
     });
     // click function for all content - loaded statically and dynamically
     $(document).on("click", "a", function(e) {
-        console.log("log something");
+        // console.log("log something");
         $('article').css('visibility', 'hidden');
         return false;
     });

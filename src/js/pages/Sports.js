@@ -15,12 +15,10 @@ export default class Sports extends React.Component {
     }
     
     mountOrUpdate() {
-        console.log(this.props.showMe);
         var URL = "https://byucougars.com/dl/feeds/allcampspersport/" + this.props.params.sportid;
         var th = this;
         this.serverRequest = axios.get(URL)
             .then(function(response) {
-                console.log(response.data);
                 th.setState({
                     data: response.data
                 });
@@ -33,16 +31,8 @@ export default class Sports extends React.Component {
         this.mountOrUpdate();
     }
     componentWillReceiveProps(nextProps) {
-        // if(this.props.params.sportid == nextProps.params.sportid) {
-        console.log('props changing');
         this.mountOrUpdate();
-        // }
-        
     }
-    // componentWillUnmount() {
-    //     console.log('unmounting ' + this.serverRequest);
-    //     this.serverRequest.abort();
-    // }
 
     render() {
         var camps = [];
@@ -51,7 +41,7 @@ export default class Sports extends React.Component {
             this.state.data.forEach(item => {
                 link = 'camps/' + item.nid;
                 camps.push(
-                    <div key={item.nid} className={ "col-xs-12 col-md-6 col-lg-4 " + styles.individualCamp }>
+                    <div key={item.nid} className={ "col-sm-12 col-md-6 col-lg-4 " + styles.individualCamp }>
                         <div>
                             <h2><Link to={link}>{renderHTML(item.title)}</Link></h2>
                             <h3>{renderHTML(item.field_event_date)}</h3>
@@ -63,7 +53,6 @@ export default class Sports extends React.Component {
                 
             });
         } else {
-            // console.log('length is zero');
             camps.push(
                 <h2 className={styles.noCamps}>There are currently no camps open for {this.props.params.sport}</h2>
             );
@@ -76,7 +65,7 @@ export default class Sports extends React.Component {
         <div>
             <DemoCarousel/>
             <div className={ "container-fluid" }>
-                <div className={ "row" }>
+                <div className={ styles.row + " row" }>
                     {camps}
                 </div>
             </div>

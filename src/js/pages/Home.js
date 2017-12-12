@@ -19,7 +19,6 @@ export default class Home extends React.Component {
     var th = this;
     this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps")
       .then(function(response) {
-        console.log(response.data);
         th.setState({
           data: response.data
       });

@@ -1,5 +1,6 @@
 .campBanner {
     background: url('/2-react-router/src/media/images/17mbball_wallpaper.jpg');
+    background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;
     padding-top: 120px;
@@ -17,8 +18,9 @@
 }
 .campInfo button {
     width: 33.4%;
-    min-width: 150px;
+    min-width: 100px;
     margin-left: 33.3%;
+    margin-top: 15px;
     font-size: 18pt;
     padding: .4em 0;
     background: #002d5d;
@@ -55,45 +57,50 @@
 .whenWhoPrice h4 {
     color: #002d5d;
 }
-.relatedCampFlex {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.noRegistration {
+    color: red;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
 }
-.relatedCamps {
-    background: white;
-    margin-top: 15px;
-    box-shadow: 0px 0px 2px #333;
-}
-.relatedCamps div+div {
-    border-left: 1px solid #dbddd3;
-}
-.relatedCamp {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 10px;
-    margin: 10px 0;
-}
-.relatedCamp h4 {
-    color: #002d5d;
-}
-.relatedCamp * {
-    text-align: center;
-}
-.relatedCamp button {
-    background: #002d5d;
-}
-.relatedCamp button a {
-    color:white;
-    display: inline-block;
-    width: 100%;
+/*.relatedCampFlex {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+/*.relatedCamps {*/
+/*    background: white;*/
+/*    margin-top: 15px;*/
+/*    box-shadow: 0px 0px 2px #333;*/
+/*}*/
+/*.relatedCamps div+div {*/
+/*    border-left: 1px solid #dbddd3;*/
+/*}*/
+/*.relatedCamp {*/
+/*    flex-grow: 1;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    padding: 0 10px;*/
+/*    margin: 10px 0;*/
+/*}*/
+/*.relatedCamp h4 {*/
+/*    color: #002d5d;*/
+/*}*/
+/*.relatedCamp * {*/
+/*    text-align: center;*/
+/*}*/
+/*.relatedCamp button {*/
+/*    background: #002d5d;*/
+/*}*/
+/*.relatedCamp button a {*/
+/*    color:white;*/
+/*    display: inline-block;*/
+/*    width: 100%;*/
     
-}
-.relatedCamp button a:hover {
-    text-decoration: none;
-}
+/*}*/
+/*.relatedCamp button a:hover {*/
+/*    text-decoration: none;*/
+/*}*/
 @media screen and (max-width: 767px) {
     .campBanner {
         padding-top: 20px;
