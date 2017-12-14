@@ -20,7 +20,7 @@ export default class Camps extends React.Component {
     
     componentDidMount() {
         var th = this;
-        var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid
+        var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;
         this.serverRequest = axios.get(URL).then(function(response) {
             const data = response.data[0];
             th.setState({

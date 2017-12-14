@@ -5,13 +5,14 @@ import axios from 'axios';
 import renderHTML from 'react-render-html';
 import DemoCarousel1 from "../components/Carousel1";
 import Ads from "../components/Ads";
-import Tint from "../components/Tint";
+// import Tint from "../components/Tint";
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      body: ''
     };
   }
       
@@ -26,6 +27,17 @@ export default class Home extends React.Component {
     .catch(function(error) {
       console.log(error);
     });
+    this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sc-basic-page/1282948")
+      .then(function(response) {
+        const data = response.data[0];
+        th.setState({
+          body: data.body
+        });
+        // console.log(th.state.body);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   
   
@@ -35,8 +47,8 @@ export default class Home extends React.Component {
       var link = 'sports/' + item.name + "/" + item.tid;
       sports.push(
         <Link key={item.tid} to={link} className={"col-md-6 col-xs-12"}>{item.name}</Link>
-      )
-    })
+      );
+    });
     // <div className={ styles.videoLoopContainer }>
     //       <video autoPlay loop muted preload webkit-playsinline="true" className={ styles.homeVideo }>
     //         <source src="media/videos/SportsCamps_WIDE.mp4" type="video/mp4"/>
@@ -47,11 +59,15 @@ export default class Home extends React.Component {
     //         <h1>Registration is now open for all 2018 camps</h1>
     //       </div>
     //     </div>
+    
+    // <div className={ "container " + styles.homeBody }>
+    //   { renderHTML(this.state.body) }
+    // </div>
     return (
       <div>
         <DemoCarousel1/>
         <Ads/>
-        <div className={ styles.sportsDiv+ ' container'}>
+        <div className={ styles.sportsDiv + ' container'}>
             <div className={"row " + styles.row}>
               {sports}
             </div>

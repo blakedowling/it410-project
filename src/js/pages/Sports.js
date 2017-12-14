@@ -54,7 +54,7 @@ export default class Sports extends React.Component {
             });
         } else {
             camps.push(
-                <h2 className={styles.noCamps}>There are currently no camps open for {this.props.params.sport}</h2>
+                <h2 key={1} className={styles.noCamps}>There are currently no camps open for {this.props.params.sport}</h2>
             );
         }
         // const { query } = this.props.location;
@@ -63,7 +63,9 @@ export default class Sports extends React.Component {
         
     return (
         <div>
-            <DemoCarousel/>
+            <div>
+                <img className={ styles.campImg } src="media/images/17mbball_wallpaper (1).jpg" />
+            </div>
             <div className={ "container-fluid" }>
                 <div className={ styles.row + " row" }>
                     {camps}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 
 export default class Footer extends React.Component {
@@ -36,23 +37,15 @@ export default class Footer extends React.Component {
     };
     
     return (
-      // <footer>
-      //   <div class="row">
-      //     <div class="col-lg-12">
-      //       <p>Copyright &copy; KillerNews.net</p>
-      //     </div>
-      //   </div>
-      // </footer>
       <footer class="row" style={footer}>
             <div class="col-xs-12 col-md-12" style={copyrightDiv}>
                 <img height="100" src="media/images/BYUlogo_stroke400.png" alt="BYU Logo"/>
                 <h3 style={ footerH3 }>© 2011 BYU ATHLETICS. All Rights Reserved.<br/>331 SAB • Provo, UT 84602 | 801.422.2096</h3>
                 <p style={ footerP }>
-                    <a style={footerPA} href="#">Copyright</a> | <a style={footerPA}  href="#">Privacy Policy</a> | <a style={footerPA} href="#">Terms of Use</a> | <a style={footerPA} href="#">Contact Us</a> | <a style={footerPA} href="#">Feedback</a>
+                    <Link style={footerPA} to="page/copyright/1282951">Copyright</Link> | <Link style={footerPA} to="page/privacy-policy/1282950">Privacy Policy</Link> | <Link style={footerPA} to="page/terms-of-use/1282952">Terms of Use</Link> | <Link style={footerPA} to="page/contact/1282928">Contact Us</Link> | <a style={footerPA} href="#">Feedback</a>
                 </p>
             </div>
             
-
             <div className="container" style={footerLogos}>
                     <a href="http://www.espn.go.com"><img src="media/images/footer_espn_logo.png" class="img-responsive" alt="ESPN Logo"/></a>
                     <a href="http://www.byutv.org"><img src="media/images/footer_byu_tv_logo.png" class="img-responsive" alt="BYU TV Logo"/></a>
@@ -61,7 +54,6 @@ export default class Footer extends React.Component {
                     <a href="http://www.byu.edu"><img src="media/images/footer_byu_edu.png" class="img-responsive" alt="BYU School Logo"/></a>
                     <a href="http://www.lds.org"><img src="media/images/footer_lds_church.png" class="img-responsive" alt="LDS Church"/></a>
             </div>
-    
         </footer>
     );
   }

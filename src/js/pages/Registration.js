@@ -95,7 +95,7 @@ export default class Registration extends React.Component {
                             for Fathers and Sons Camp.  No refunds for cancellations within the 21 days before the camp begins.  For example, 
                             if you are attending Fathers and Sons Camp beginning Friday, May 26th, refunds will not be given after 5 p.m.Friday, May 5th.
                         </p>
-                        <p><a href="byusportscamps.com/general-info">Learn more about general camp information</a></p>
+                        <p><a href="http://byusportscamps.com/general-info">Learn more about general camp information</a></p>
                     </div>
                 </div>
                 <Ads/>

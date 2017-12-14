@@ -2,7 +2,7 @@ import React from "react";
 import { IndexLink, Link } from "react-router";
 import styles from './nav.css';
 import axios from 'axios';
-import renderHTML from 'react-render-html';
+// import renderHTML from 'react-render-html';
 
 export default class Nav extends React.Component {
   constructor(props) {
@@ -93,7 +93,7 @@ export default class Nav extends React.Component {
       			<section className={ styles.dropdown }>
         			<li className={ styles.headerLeftItems + " " + moreClass }><Link to="" className={ styles.dropbtn }>More</Link></li>
         			<article className={ styles.dropdownContent }>
-        			  <Link to="page/general info/1282927" className={ styles.dropbtn }>General Info</Link>
+        			  <Link to="page/general-info/1282927" className={ styles.dropbtn }>General Info</Link>
         			  <Link to="page/counselors/1282929">Counselors</Link>
       					<Link to="page/lodging/1282930">Lodging</Link>
       					<Link to="page/FAQ/1282931">FAQ</Link>
@@ -102,7 +102,7 @@ export default class Nav extends React.Component {
       		</ul>
       		
       		<div className={ styles.logos }>
-      			<a target="_blank" href="https://twitter.com/byusportscamps?lang=en">
+      			<a href="https://twitter.com/byusportscamps" target="_blank">
       				<img src="media/images/twitter.png" alt="Twitter"/>
       			</a>
       			
@@ -160,7 +160,7 @@ $(document).ready(function() {
     $(document).on("click", "a", function(e) {
         // console.log("log something");
         $('article').css('visibility', 'hidden');
-        return false;
+        // return false;
     });
     // makes dropdown article visible/hidden on mouseenter/leave of section 
     $('section').on("mouseenter", function(e) {

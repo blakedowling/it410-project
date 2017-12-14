@@ -17,8 +17,6 @@ export default class Calendar extends React.Component {
         var th = this;
         var URL = "https://byucougars.com/dl/feeds/sc-schedule";
         this.serverRequest = axios.get(URL).then(function(response) {
-            // const data = response.data[0];
-            console.log(response);
             th.setState({
                 data: response.data
             });
@@ -33,7 +31,6 @@ export default class Calendar extends React.Component {
         var monthSelector = document.querySelector('select');
         var month = monthSelector.options[monthSelector.selectedIndex].value;
         var URL = "https://byucougars.com/dl/feeds/sc-schedule/" + month;
-        console.log(month);
         this.serverRequest = axios.get(URL).then(function(response) {
             th.setState({
                 data: response.data
@@ -92,7 +89,7 @@ export default class Calendar extends React.Component {
                     <div className={"container " + styles.scheduleInfo}>
                         <h1 className={"text-center"}>All Camps Schedule</h1>
                         <div className={styles.filterDiv}>
-                            <select name="months" className={styles.months}>
+                            <select onChange={this.changeMonth.bind(this)} name="months" className={styles.months}>
                                 <option value="">-------Filter by Month-------</option>
                                 <option value="01">January</option>
                                 <option value="02">February</option>
@@ -107,8 +104,7 @@ export default class Calendar extends React.Component {
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <span className={styles.apply + " btn-raised btn btn-default"} onClick={this.changeMonth.bind(this)}>Apply</span>
-                            <span className={styles.apply + " btn-raised btn btn-default"} onClick={this.clearMonth.bind(this)}>Clear</span>
+                            <span className={styles.apply + " btn-raised btn btn-default"} onClick={this.clearMonth.bind(this)}>Reset</span>
                         </div>
                         {camps}
                     </div>

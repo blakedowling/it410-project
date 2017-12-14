@@ -1,7 +1,10 @@
-.carousel-item .img-fluid {
-    position: relative;
+/*.carousel-item .img-fluid {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+.campImg {
     width: 100%;
-    height: 100%;
 }
 .row {
     margin: 0 10%;
