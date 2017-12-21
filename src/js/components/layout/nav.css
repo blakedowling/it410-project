@@ -60,14 +60,14 @@ body {
 
 }
 
-.headerLeftItems.active a {
+.headerLeftItems.active a, .headerLeftItems.active a {
     background-color: #002d5d;
     color: white;
 }
 .headerLeftItems.active a:hover {
     color: white;
 }
-.headerLeftItems a {
+.headerLeftItems a, .headerLeftItems span {
     padding-left: 1em;
     padding-right: 1em;
     font-size: 12pt;

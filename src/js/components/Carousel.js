@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Carousel } from 'react-responsive-carousel';
  
 export default class DemoCarousel extends Component {
@@ -9,19 +8,21 @@ export default class DemoCarousel extends Component {
             <Carousel>
                 <div>
                     <img src="media/images/17mbball_wallpaper (1).jpg" />
-                    <p className="legend">Camp 1</p>
+                    <p className="legend">Boys Basketball</p>
                 </div>
                 <div>
-                    <img src="media/images/17mbball_wallpaper (1).jpg" />
-                    <p className="legend">Camp 2</p>
+                    <img src="media/images/football.jpg" />
+                    <p className="legend">Football</p>
                 </div>
                 <div>
-                    <img src="media/images/17mbball_wallpaper (1).jpg" />
-                    <p className="legend">Camp 3</p>
+                    <img src="media/images/baseball.jpg" />
+                    <p className="legend">Baseball</p>
+                </div>
+                <div>
+                    <img src="media/images/w-soccer.jpg" />
+                    <p className="legend">Soccer</p>
                 </div>
             </Carousel>
         );
     }
 }
- 
-// ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));

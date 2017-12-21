@@ -104,7 +104,7 @@ export default class Calendar extends React.Component {
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <span className={styles.apply + " btn-raised btn btn-default"} onClick={this.clearMonth.bind(this)}>Reset</span>
+                            <button className={styles.apply + " btn-raised btn btn-default"} onClick={this.clearMonth.bind(this)}>Reset</button>
                         </div>
                         {camps}
                     </div>

@@ -82,7 +82,7 @@ export default class Nav extends React.Component {
           <ul>
       			<li className={ styles.headerLeftItems + " " + homeClass }><Link to="/"><img className={ styles.siteLogo }src="media/images/BYUlogo_stroke400.png" alt="BYU Logo"/></Link></li>
       			<section className={ styles.dropdown }>
-          		<li className={ styles.headerLeftItems + " " + campClass }><a className={ styles.dropbtn }>Camps</a></li>
+          		<li className={ styles.headerLeftItems + " " + campClass }><span className={ styles.dropbtn }>Camps</span></li>
           		<article className={ styles.dropdownContent }>
           		  {desktopSports}
       				</article>
@@ -91,7 +91,7 @@ export default class Nav extends React.Component {
       			<li className={ styles.headerLeftItems + " " + calendarClass }><Link to="calendar">Calendar</Link></li>
       			<li className={ styles.headerLeftItems + " " + contactClass }><Link to="page/contact/1282928">Contact</Link></li>
       			<section className={ styles.dropdown }>
-        			<li className={ styles.headerLeftItems + " " + moreClass }><Link to="" className={ styles.dropbtn }>More</Link></li>
+        			<li className={ styles.headerLeftItems + " " + moreClass }><span className={ styles.dropbtn }>More</span></li>
         			<article className={ styles.dropdownContent }>
         			  <Link to="page/general-info/1282927" className={ styles.dropbtn }>General Info</Link>
         			  <Link to="page/counselors/1282929">Counselors</Link>

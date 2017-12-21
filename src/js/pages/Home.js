@@ -3,7 +3,7 @@ import styles from "./home.css";
 import { Link } from "react-router";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
-import DemoCarousel1 from "../components/Carousel1";
+import DemoCarousel from "../components/Carousel";
 import Ads from "../components/Ads";
 // import Tint from "../components/Tint";
 
@@ -65,7 +65,7 @@ export default class Home extends React.Component {
     // </div>
     return (
       <div>
-        <DemoCarousel1/>
+        <DemoCarousel/>
         <Ads/>
         <div className={ styles.sportsDiv + ' container'}>
             <div className={"row " + styles.row}>
