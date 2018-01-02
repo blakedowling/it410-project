@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
+import { Router, Route, IndexRoute, browserHistory } from "react-router";
 
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
@@ -13,7 +13,7 @@ import Page from "./pages/Page";
 const app = document.getElementById('app');
 
 ReactDOM.render(
-  <Router onUpdate={() => window.scrollTo(0,0)} history={hashHistory}>
+  <Router onUpdate={() => window.scrollTo(0,0)} history={browserHistory}>
     <Route path="/" component={Layout}>
       <IndexRoute component={Home}></IndexRoute>
       <Route path="sports(/:sport/:sportid)" name="sport" component={Sports}></Route>

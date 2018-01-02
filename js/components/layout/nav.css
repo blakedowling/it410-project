@@ -173,14 +173,15 @@ body {
 /*.mobileNavUl li {*/
 /*    padding: .5em 0 .5em 20px;*/
 /*}*/
-.mobileNavUl a:hover {
+.mobileNavUl a:hover, .mobileNavUl span:hover {
     background-color: #A9A9A9;
     text-decoration: none;
+    cursor: pointer;
 }
 .mobileNavUl > li {
     border-top: 1px solid black;
 }
-.mobileNavUl a {
+.mobileNavUl a, .mobileNavUl span {
     padding: .5em 0 .5em 20px;
     width: 100%;
     display:inline-block;

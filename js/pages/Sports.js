@@ -10,18 +10,22 @@ export default class Sports extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            dataThere: false
         };
     }
     
     mountOrUpdate() {
         var URL = "https://byucougars.com/dl/feeds/allcampspersport/" + this.props.params.sportid;
         var th = this;
+        // console.log(this.props);
         this.serverRequest = axios.get(URL)
             .then(function(response) {
                 th.setState({
-                    data: response.data
+                    data: response.data,
+                    dataThere: true
                 });
+            // console.log(th.state.data);
         }.bind(this))
         .catch(function(error) {
             console.log(error);
@@ -31,32 +35,36 @@ export default class Sports extends React.Component {
         this.mountOrUpdate();
     }
     componentWillReceiveProps(nextProps) {
+        // this.setState({ dataThere: false });
         this.mountOrUpdate();
     }
 
     render() {
         var camps = [];
         var link;
-        if(this.state.data.length != 0) {
-            this.state.data.forEach(item => {
-                link = 'camps/' + item.nid;
-                camps.push(
-                    <div key={item.nid} className={ "col-sm-12 col-md-6 col-lg-4 " + styles.individualCamp }>
-                        <div>
-                            <h2><Link to={link}>{renderHTML(item.title)}</Link></h2>
-                            <h3>{renderHTML(item.field_event_date)}</h3>
-                            <h3>{item.field_age_restriction}</h3>
-                            <h3>{item.field_price}</h3>
+        if(this.state.dataThere) {
+            if(this.state.data.length != 0) {
+                this.state.data.forEach(item => {
+                    link = 'camps/' + item.nid;
+                    camps.push(
+                        <div key={item.nid} className={ "col-sm-12 col-md-6 col-lg-4 " + styles.individualCamp }>
+                            <div>
+                                <h2><Link to={link}>{renderHTML(item.title)}</Link></h2>
+                                <h3>{renderHTML(item.field_event_date)}</h3>
+                                <h3>{item.field_age_restriction}</h3>
+                                <h3>{item.field_price}</h3>
+                            </div>
                         </div>
-                    </div>
+                    );
+                    
+                });
+            } else {
+                camps.push(
+                    <h2 key={1} className={styles.noCamps}>There are currently no camps open for {this.props.params.sport}</h2>
                 );
-                
-            });
-        } else {
-            camps.push(
-                <h2 key={1} className={styles.noCamps}>There are currently no camps open for {this.props.params.sport}</h2>
-            );
+            }
         }
+        
         // const { query } = this.props.location;
         const { params } = this.props;
         const { sport } = params;
