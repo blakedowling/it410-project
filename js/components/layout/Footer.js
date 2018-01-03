@@ -42,7 +42,7 @@ export default class Footer extends React.Component {
                 <img height="100" src="media/images/BYUlogo_stroke400.png" alt="BYU Logo"/>
                 <h3 style={ footerH3 }>© 2011 BYU ATHLETICS. All Rights Reserved.<br/>331 SAB • Provo, UT 84602 | 801.422.2096</h3>
                 <p style={ footerP }>
-                    <Link style={footerPA} to="page/copyright/1282951">Copyright</Link> | <Link style={footerPA} to="page/privacy-policy/1282950">Privacy Policy</Link> | <Link style={footerPA} to="page/terms-of-use/1282952">Terms of Use</Link> | <Link style={footerPA} to="page/contact/1282928">Contact Us</Link> | <a style={footerPA} href="#">Feedback</a>
+                    <Link style={footerPA} to="page/copyright/1282951">Copyright</Link> | <Link style={footerPA} to="page/privacy-policy/1282950">Privacy Policy</Link> | <Link style={footerPA} to="page/terms-of-use/1282952">Terms of Use</Link> | <Link style={footerPA} to="page/contact/1282928">Contact Us</Link>
                 </p>
             </div>
             

@@ -60,7 +60,7 @@ body {
 
 }
 
-.headerLeftItems.active a, .headerLeftItems.active a {
+.headerLeftItems.active a, .headerLeftItems.active span {
     background-color: #002d5d;
     color: white;
 }

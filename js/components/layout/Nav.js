@@ -58,7 +58,7 @@ export default class Nav extends React.Component {
     const calendarClass = location.pathname.match(/^\/calendar/) ? styles.active : "";
     const campClass = location.pathname.match(/^\/sport/) || location.pathname.match(/^\/camp/) ? styles.active : "";
     const registrationClass = location.pathname.match(/^\/page\/registration/) ? styles.active : "";
-    const moreClass = location.pathname.match(/^\/page\/general info/) || location.pathname.match(/^\/page\/counselors/) || location.pathname.match(/^\/page\/FAQ/) || location.pathname.match(/^\/page\/lodging/) ? styles.active : "";
+    const moreClass = location.pathname.match(/^\/page\/general-info/) || location.pathname.match(/^\/page\/counselors/) || location.pathname.match(/^\/page\/FAQ/) || location.pathname.match(/^\/page\/lodging/) ? styles.active : "";
     const contactClass = location.pathname.match(/^\/page\/contact/) ? styles.active : "";
     const navClass = collapsed ? "collapse" : "";
     const campsNav = campsCollapsed ? "collapse" : "";

@@ -3,6 +3,7 @@ import React from "react";
 export default class Equality extends React.Component {
   render() {
      const equal = {
+        color: 'black',
         margin: '15px',
         textAlign: 'center',
         fontWeight: 'bold',
