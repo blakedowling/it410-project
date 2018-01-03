@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./sports.css";
 import { Link } from 'react-router';
-import DemoCarousel from "../components/Carousel";
+// import DemoCarousel from "../components/Carousel";
+import Equality from "../components/Equality";
 import Ads from "../components/Ads";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
@@ -79,6 +80,7 @@ export default class Sports extends React.Component {
                     {camps}
                 </div>
             </div>
+            <Equality/>
             <Ads/>
         </div>
     );

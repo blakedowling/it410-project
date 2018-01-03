@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./camps.css";
 // import { Link } from 'react-router';
+import Equality from "../components/Equality";
 import Ads from "../components/Ads";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
@@ -61,6 +62,7 @@ export default class Camps extends React.Component {
                         {register}
                     </div>
                 </div>
+                <Equality/>
                 <Ads/>
             </div>
         );

@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./page.css";
+import Equality from "../components/Equality";
 import Ads from "../components/Ads";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 // import { findDOMNode } from ‘react-dom’;
-// import $ from 'jquery';
+import $ from 'jquery';
 
 
 export default class Page extends React.Component {
@@ -16,10 +17,10 @@ export default class Page extends React.Component {
         };
     }
     
-    mountOrUpdate() {
+    mountOrUpdate(params) {
         var th = this;
-        var URL = "https://byucougars.com/dl/feeds/sc-basic-page/" + this.props.params.pageid;
-        // console.log(this.props.params);
+        var URL = "https://byucougars.com/dl/feeds/sc-basic-page/" + params.pageid;
+        console.log(this.props.params);
         // const paramsURL = "#/page/" + this.props.params.title + "/" + this.props.params.pageid;
         // console.log(paramsURL);
         // const windowURL = window.location.hash.substring(0, window.location.hash.length-10);
@@ -40,15 +41,14 @@ export default class Page extends React.Component {
         });
     }
     componentDidMount() {
-        this.mountOrUpdate();
+        // console.log(this.props);
+        this.mountOrUpdate(this.props.params);
     }
     
     componentWillReceiveProps(nextProps) {
-        this.mountOrUpdate();
-    }
-    
-    redirectRegister() {
-        this.props.history.push("page/registration/1282926");
+        console.log(this.props);
+        console.log(nextProps);
+        this.mountOrUpdate(nextProps.params);
     }
     
     render() {
@@ -60,6 +60,7 @@ export default class Page extends React.Component {
                         <div>{renderHTML(this.state.body)}</div>
                     </div>
                 </div>
+                <Equality/>
                 <Ads/>
             </div>
         );
@@ -90,13 +91,6 @@ $(document).ready(function() {
         $('html, body').animate({
             scrollTop: $( $(this).attr('href') ).offset().top - 80
         }, 1000);
-    });
-    
-    $(document).on("click", ".redirect-register", function(e) {
-        e.preventDefault();
-        // Page.redirectRegister();
-        // console.log(Page);
-        // Page.this.props.history.push("page/registration/1282926");
     });
 });
 
