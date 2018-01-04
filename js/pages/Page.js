@@ -18,16 +18,13 @@ export default class Page extends React.Component {
     }
     
     mountOrUpdate(params) {
+        var title = params.title.replace(/-/g, ' ');
+        // capitalizes the first letter of each word in the title
+        title = title.replace(/\b[a-z]/g,function(f){return f.toUpperCase();});
+        document.title = title + ' | BYU Sports Camps';
         var th = this;
         var URL = "https://byucougars.com/dl/feeds/sc-basic-page/" + params.pageid;
-        console.log(this.props.params);
-        // const paramsURL = "#/page/" + this.props.params.title + "/" + this.props.params.pageid;
-        // console.log(paramsURL);
-        // const windowURL = window.location.hash.substring(0, window.location.hash.length-10);
-        // console.log(windowURL);
-        // if(paramsURL != windowURL) {
-        //     this.props.history.push(windowURL);
-        // }
+
         this.serverRequest = axios.get(URL)
             .then(function(response) {
                 const data = response.data[0];
@@ -41,13 +38,10 @@ export default class Page extends React.Component {
         });
     }
     componentDidMount() {
-        // console.log(this.props);
         this.mountOrUpdate(this.props.params);
     }
     
     componentWillReceiveProps(nextProps) {
-        console.log(this.props);
-        console.log(nextProps);
         this.mountOrUpdate(nextProps.params);
     }
     

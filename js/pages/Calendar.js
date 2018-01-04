@@ -15,6 +15,7 @@ export default class Calendar extends React.Component {
     }
     
     componentDidMount() {
+        document.title = "Calendar | BYU Sports Camps";
         var th = this;
         var URL = "https://byucougars.com/dl/feeds/sc-schedule";
         this.serverRequest = axios.get(URL).then(function(response) {

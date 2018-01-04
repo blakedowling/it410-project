@@ -17,6 +17,7 @@ export default class Sports extends React.Component {
     }
     
     mountOrUpdate() {
+        document.title = this.props.params.sport + ' Camps | BYU Sports Camps';
         var URL = "https://byucougars.com/dl/feeds/allcampspersport/" + this.props.params.sportid;
         var th = this;
         // console.log(this.props);
@@ -43,10 +44,13 @@ export default class Sports extends React.Component {
     render() {
         var camps = [];
         var link;
+        var urlTitle;
         if(this.state.dataThere) {
             if(this.state.data.length != 0) {
                 this.state.data.forEach(item => {
-                    link = 'camps/' + item.nid;
+                    urlTitle = item.title.replace(/ /g, '-');
+                    console.log(urlTitle);
+                    link = 'camps/' + urlTitle + '/' + item.nid;
                     camps.push(
                         <div key={item.nid} className={ "col-sm-12 col-md-6 col-lg-4 " + styles.individualCamp }>
                             <div>

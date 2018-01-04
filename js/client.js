@@ -17,7 +17,7 @@ ReactDOM.render(
     <Route path="/" component={Layout}>
       <IndexRoute component={Home}></IndexRoute>
       <Route path="sports(/:sport/:sportid)" name="sport" component={Sports}></Route>
-      <Route path="camps(/:campid)" name="camp" component={Camps}></Route>
+      <Route path="camps(/:camp/:campid)" name="camp" component={Camps}></Route>
       <Route path="calendar" name="calendar" component={Calendar}></Route>
       <Route path="page(/:title/:pageid)" name="page" component={Page}></Route>
     </Route>
