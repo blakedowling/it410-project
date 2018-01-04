@@ -36,6 +36,9 @@ export default class Camps extends React.Component {
                 body: data.body,
                 registration_url: data.field_registration_url
             });
+            console.log(th.state.when);
+            console.log(Date.parse(th.state.when));
+            console.log(Date.now());
         })
         .catch(function(error) {
             console.log(error);
@@ -49,7 +52,11 @@ export default class Camps extends React.Component {
         if(this.state.registration_url != '') {
             register = <button><a href={this.state.registration_url} target="_blank">Register</a></button>;
         } else {
-            register = <h3 className={styles.noRegistration + " text-center"}>Registration for this camp is not yet open</h3>;
+            if(Date.parse(this.state.when) < Date.now()) {
+                register = <h3 className={styles.noRegistration + " text-center"}>Registration for this camp is closed</h3>;
+            } else {
+                register = <h3 className={styles.noRegistration + " text-center"}>Registration for this camp is not yet open</h3>;
+            }
         }
         
         return (
