@@ -66,8 +66,11 @@ export default class Nav extends React.Component {
     
     var desktopSports = [];
     var mobileSports = [];
+    var link;
+    var urlTitle;
     this.state.data.forEach(item => {
-      var link = 'sports/' + item.name + "/" + item.tid;
+      urlTitle = item.name.replace(/ /g, '-').toLowerCase();
+      link = 'sports/' + urlTitle + '/' + item.tid;
       desktopSports.push(
         <Link key={item.tid} to={link}>{item.name}</Link>
       );

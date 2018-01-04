@@ -12,12 +12,15 @@ export default class Sports extends React.Component {
         super(props);
         this.state = {
             data: [],
-            dataThere: false
+            dataThere: false,
+            image: ''
         };
     }
     
     mountOrUpdate() {
-        document.title = this.props.params.sport + ' Camps | BYU Sports Camps';
+        var title = this.props.params.sport.replace(/-/g, ' ');
+        title = title.replace(/\b[a-z]/g,function(f){return f.toUpperCase();}) + ' | BYU Sports Camps';
+        document.title = title;
         var URL = "https://byucougars.com/dl/feeds/allcampspersport/" + this.props.params.sportid;
         var th = this;
         // console.log(this.props);
@@ -32,6 +35,18 @@ export default class Sports extends React.Component {
         .catch(function(error) {
             console.log(error);
         });
+        console.log(this.props.params.sportid);
+        this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps/" + this.props.params.sportid)
+            .then(function(response) {
+                console.log(response);
+                th.setState({
+                    image: response.data[0].field_scimage
+                });
+        }.bind(this))
+        .catch(function(error) {
+            console.log(error);
+        });
+        
     }
     componentDidMount() {
         this.mountOrUpdate();
@@ -48,8 +63,7 @@ export default class Sports extends React.Component {
         if(this.state.dataThere) {
             if(this.state.data.length != 0) {
                 this.state.data.forEach(item => {
-                    urlTitle = item.title.replace(/ /g, '-');
-                    console.log(urlTitle);
+                    urlTitle = item.title.replace(/ /g, '-').toLowerCase();
                     link = 'camps/' + urlTitle + '/' + item.nid;
                     camps.push(
                         <div key={item.nid} className={ "col-sm-12 col-md-6 col-lg-4 " + styles.individualCamp }>
@@ -77,7 +91,7 @@ export default class Sports extends React.Component {
     return (
         <div>
             <div>
-                <img className={ styles.campImg } src="media/images/17mbball_wallpaper (1).jpg" />
+                <img className={ styles.campImg } src={this.state.image} />
             </div>
             <div className={ "container-fluid" }>
                 <div className={ styles.row + " row" }>

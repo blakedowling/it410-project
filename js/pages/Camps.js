@@ -20,7 +20,9 @@ export default class Camps extends React.Component {
     }
     
     componentDidMount() {
-        var title = this.props.params.camp.replace(/-/g, ' ') + ' | BYU Sports Camps';
+        var title = this.props.params.camp.replace(/-/g, ' ');
+        title = title.replace(/\b[a-z]/g,function(f){return f.toUpperCase();}) + ' | BYU Sports Camps';
+        // + ' | BYU Sports Camps';
         document.title = title;
         var th = this;
         var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;

@@ -43,8 +43,11 @@ export default class Home extends React.Component {
   
   render() {
     var sports = [];
+    var link;
+    var urlTitle;
     this.state.data.forEach(item => {
-      var link = 'sports/' + item.name + "/" + item.tid;
+      urlTitle = item.name.replace(/ /g, '-').toLowerCase();
+      link = 'sports/' + urlTitle + '/' + item.tid;
       sports.push(
         <Link key={item.tid} to={link} className={"col-md-6 col-xs-12"}>{item.name}</Link>
       );
