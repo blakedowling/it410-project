@@ -6,7 +6,6 @@ import renderHTML from 'react-render-html';
 import DemoCarousel from "../components/Carousel";
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
-// import Tint from "../components/Tint";
 
 export default class Home extends React.Component {
   constructor(props) {

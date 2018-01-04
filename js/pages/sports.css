@@ -5,6 +5,7 @@
 /*}*/
 .campImg {
     width: 100%;
+    box-shadow: 0px 0px 2px #333;
 }
 .row {
     margin: 0 10%;
