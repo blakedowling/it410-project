@@ -30,12 +30,14 @@ export default class DemoCarousel extends Component {
         var slides = [];
         var link;
         var urlTitle;
+        var alt;
         this.state.data.forEach(item => {
-            urlTitle = item.title.replace(/ /g, '-');
+            urlTitle = item.title.replace(/ /g, '-').toLowerCase();
             link = 'camps/' + urlTitle + '/' + item.nid;
+            alt = 'BYU Sports Camps - ' + item.title;
             slides.push(
                 <div key={item.nid}>
-                    <img src={item.field_single_use_photos}/>
+                    <img src={item.field_single_use_photos} alt={alt}/>
                     <Link to={link} className="legend">{item.field_slider_text}</Link>
                 </div>
             );
