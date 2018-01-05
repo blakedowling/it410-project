@@ -19,7 +19,6 @@
 }
 .campInfo button {
     width: 33.4%;
-    min-width: 100px;
     margin-left: 33.3%;
     margin-top: 15px;
     font-size: 18pt;
@@ -103,6 +102,12 @@
 /*.relatedCamp button a:hover {*/
 /*    text-decoration: none;*/
 /*}*/
+@media screen and (max-width: 991px) {
+    .campInfo button {
+        width: 225px;
+        margin-left: calc(50% - 100px);
+    }
+}
 @media screen and (max-width: 767px) {
     .campBanner {
         padding-top: 20px;
