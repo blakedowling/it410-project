@@ -13,7 +13,8 @@ export default class Sports extends React.Component {
         this.state = {
             data: [],
             dataThere: false,
-            image: ''
+            image: '',
+            sport: ''
         };
     }
     
@@ -38,13 +39,13 @@ export default class Sports extends React.Component {
         this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps/" + this.props.params.sportid)
             .then(function(response) {
                 th.setState({
-                    image: response.data[0].field_scimage
+                    image: response.data[0].field_scimage,
+                    sport: response.data[0].name
                 });
         }.bind(this))
         .catch(function(error) {
             console.log(error);
         });
-        
     }
     componentDidMount() {
         this.mountOrUpdate();
@@ -85,20 +86,21 @@ export default class Sports extends React.Component {
         // const { query } = this.props.location;
         const { params } = this.props;
         const { sport } = params;
+        // const { alt } = 'BYU Sports Camps - ' + this.state.sport;
         
-    return (
-        <div>
+        return (
             <div>
-                <img className={ styles.campImg } src={this.state.image} />
-            </div>
-            <div className={ "container-fluid" }>
-                <div className={ styles.row + " row" }>
-                    {camps}
+                <div>
+                    <img className={ styles.campImg } src={this.state.image} alt={ this.state.sport } />
                 </div>
+                <div className={ "container-fluid" }>
+                    <div className={ styles.row + " row" }>
+                        {camps}
+                    </div>
+                </div>
+                <Equality/>
+                <Ads/>
             </div>
-            <Equality/>
-            <Ads/>
-        </div>
-    );
-  }
+        );
+    }
 }

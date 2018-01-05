@@ -70,17 +70,21 @@ export default class Home extends React.Component {
       <div>
         <DemoCarousel/>
         <Ads/>
-        <div className={ styles.sportsDiv + ' container'}>
-            <div className={"row " + styles.row}>
-              {sports}
+        <div className={ styles.sportsDiv + ' container-fluid'}>
+          <div className={"row " + styles.homeRow}>
+            <div className={"col-md-12 col-lg-9"}>
+              <div className={"row " + styles.sportSection}>
+                {sports}
+              </div>
             </div>
+            <div className={"col-md-12 col-lg-3 " + styles.announcements}>
+              <h3 className={"text-center"}>Announcements</h3>
+              {renderHTML(this.state.body)}
+            </div>
+          </div>
         </div>
         <Equality/>
       </div>
     );
   }
 }
-
-// $(document).ready(function() {
-//   $('section').html('<h3>Social Media Feed</h3><div><script src="https://cdn.hypemarks.com/pages/a5b5e5.js" async></script><div class="tintup" data-id="byu-sports-camps" data-columns="" data-expand="true" data-mobilescroll="true" data-infinitescroll="true" data-personalization-id="875963"></div></div>');
-// });

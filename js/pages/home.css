@@ -61,7 +61,13 @@
 .sportsDiv {
     margin-bottom: 15px;
 }
-.sportsDiv .row a {
+.sportsDiv .homeRow {
+    margin: 0;
+}
+.sportSection {
+    margin-right: 0;
+}
+.sportsDiv .homeRow .sportSection a {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
@@ -70,21 +76,41 @@
     padding: 10px 0 10px 40px;
     border-top: 1px solid black;
 }
-.sportsDiv .row a:nth-child(n+1) {
+.sportsDiv .homeRow .sportSection a:nth-child(n+1) {
     border-right: 1px solid black;
 }
+.announcements {
+    background: white;
+    box-shadow: 0px 0px 2px #333;
+}
+.announcements h3 {
+    border-bottom: 1px solid #dbddd3;
+    padding: 10px 0;
+}
 
-@media screen and (max-width: 767px) {
-    .homeVideo, .videoContent {
-        display: none;
+@media screen and (max-width: 991px) {
+    .announcements {
+        -webkit-box-ordinal-group: 0;
+        -webkit-order: -1;
+        -ms-flex-order: -1;
+        order: -1;
+        margin-bottom: 15px;
     }
-    .videoLoopContainer {
-        background-image: url("/public_html/media/images/sports-camps.jpg");
-        background-size: contain;
-        background-position-x: 50%;
-        background-repeat: no-repeat;
-        /*position: relative;*/
-        padding-top: 55%;
-        /*margin-top: 57px;*/
+    .sportSection {
+        margin-right: -15px;
     }
 }
+/*@media screen and (max-width: 767px) {*/
+/*    .homeVideo, .videoContent {*/
+/*        display: none;*/
+/*    }*/
+/*    .videoLoopContainer {*/
+/*        background-image: url("/public_html/media/images/sports-camps.jpg");*/
+/*        background-size: contain;*/
+/*        background-position-x: 50%;*/
+/*        background-repeat: no-repeat;*/
+/*        position: relative;*/
+/*        padding-top: 55%;*/
+/*        margin-top: 57px;*/
+/*    }*/
+/*}*/
