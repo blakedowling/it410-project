@@ -60,8 +60,11 @@ export default class Calendar extends React.Component {
         var camps = [];
         var register;
         var link;
+        var urlTitle;
         this.state.data.forEach(item => {
-            link = 'camps/' + item.nid;
+            urlTitle = item.title.replace(/ /g, '-').toLowerCase();
+            link = 'camps/' + urlTitle + '/' + item.nid;
+            // link = 'camps/' + item.nid;
             if(item.field_registration_url == '') {
                 register = <h5>Registration not open</h5>;
             } else {

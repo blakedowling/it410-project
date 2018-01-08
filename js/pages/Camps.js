@@ -15,18 +15,20 @@ export default class Camps extends React.Component {
             who: '',
             price: '',
             body: '',
-            registration_url: ''
+            registration_url: '',
+            sportID: '',
+            image: ''
         };
     }
     
     componentDidMount() {
         var title = this.props.params.camp.replace(/-/g, ' ');
+        title = title.replace(/byu/, 'BYU');
         title = title.replace(/\b[a-z]/g,function(f){return f.toUpperCase();}) + ' | BYU Sports Camps';
-        // + ' | BYU Sports Camps';
         document.title = title;
         var th = this;
-        var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;
-        this.serverRequest = axios.get(URL).then(function(response) {
+        var URL1 = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;
+        this.serverRequest = axios.get(URL1).then(function(response) {
             const data = response.data[0];
             th.setState({
                 title: data.title,
@@ -34,11 +36,17 @@ export default class Camps extends React.Component {
                 who: data.field_age_restriction,
                 price: data.field_price,
                 body: data.body,
-                registration_url: data.field_registration_url
+                registration_url: data.field_registration_url,
+                sportID: data.field_sport
             });
-            console.log(th.state.when);
-            console.log(Date.parse(th.state.when));
-            console.log(Date.now());
+            var URL2 = "https://byucougars.com/dl/feeds/sports-camps/" + th.state.sportID;
+            th.serverRequest = axios.get(URL2).then(function(response) {
+                th.setState({
+                    image: response.data[0].field_sport_camp_image
+                });
+            }).catch(function(error) {
+                console.log(error);
+            });
         })
         .catch(function(error) {
             console.log(error);
@@ -48,6 +56,8 @@ export default class Camps extends React.Component {
     //     this.serverRequest.abort();
     // }
     render() {
+        const imageURL = 'url(' + this.state.image + ') no-repeat fixed';
+        
         var register;
         if(this.state.registration_url != '') {
             register = <button><a href={this.state.registration_url} target="_blank">Register</a></button>;
@@ -61,7 +71,7 @@ export default class Camps extends React.Component {
         
         return (
             <div>
-                <div className={ styles.campBanner }>
+                <div style={{background: imageURL, position: 'relative', paddingTop: '120px', paddingBottom: '45px', boxShadow: '0px 0px 2px #333'}}>
                     <div className={"container " + styles.campInfo}>
                         <h1 className={"text-center"}>{renderHTML(this.state.title)}</h1>
                         <div className={ styles.whenWhoPrice}>

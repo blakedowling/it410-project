@@ -13,8 +13,8 @@ export default class Sports extends React.Component {
         this.state = {
             data: [],
             dataThere: false,
-            image: '',
-            sport: ''
+            sport: '',
+            image: ''
         };
     }
     
@@ -38,9 +38,11 @@ export default class Sports extends React.Component {
         });
         this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps/" + this.props.params.sportid)
             .then(function(response) {
+                const data = response.data[0];
+                console.log(data);
                 th.setState({
-                    image: response.data[0].field_scimage,
-                    sport: response.data[0].name
+                    sport: data.name,
+                    image: data.field_scimage
                 });
         }.bind(this))
         .catch(function(error) {
