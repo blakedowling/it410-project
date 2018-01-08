@@ -56,7 +56,7 @@ export default class Camps extends React.Component {
     //     this.serverRequest.abort();
     // }
     render() {
-        const imageURL = 'url(' + this.state.image + ') no-repeat fixed';
+        const imageURL = 'url(' + this.state.image + ') no-repeat fixed center';
         
         var register;
         if(this.state.registration_url != '') {
