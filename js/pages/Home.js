@@ -6,6 +6,7 @@ import renderHTML from 'react-render-html';
 import DemoCarousel from "../components/Carousel";
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
+import $ from 'jquery';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -45,6 +46,7 @@ export default class Home extends React.Component {
     var sports = [];
     var link;
     var urlTitle;
+    var jumbo;
     this.state.data.forEach(item => {
       urlTitle = item.name.replace(/ /g, '-').toLowerCase();
       link = 'sports/' + urlTitle + '/' + item.tid;
@@ -52,6 +54,19 @@ export default class Home extends React.Component {
         <Link key={item.tid} to={link} className={"col-md-6 col-xs-12"}>{item.name}</Link>
       );
     });
+    // $(document).ready(function() {
+    //   console.log($(window).width());
+    //   if($(window).width() > 767) {
+    //     console.log('greater than 767');
+    //     jumbo = <DemoCarousel/>;
+    //     console.log(jumbo);
+    //   } else {
+    //     console.log('less than 767');
+    //     jumbo = <div className="mobileJumbo"></div>;
+    //     console.log(jumbo);
+    //   }
+    // });
+    
     // <div className={ styles.videoLoopContainer }>
     //       <video autoPlay loop muted preload webkit-playsinline="true" className={ styles.homeVideo }>
     //         <source src="media/videos/SportsCamps_WIDE.mp4" type="video/mp4"/>

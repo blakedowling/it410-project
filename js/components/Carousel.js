@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
+import $ from 'jquery';
  
 export default class DemoCarousel extends Component {
     constructor(props) {
@@ -38,15 +39,25 @@ export default class DemoCarousel extends Component {
             slides.push(
                 <div key={item.nid}>
                     <img src={item.field_scimage} alt={alt}/>
-                    <Link to={link} className="legend">{item.name}</Link>
+                    <div className="legend">
+                        <button>
+                            <Link to={link}>{item.name} Camps</Link>
+                        </button>
+                    </div>
                 </div>
             );
         });
-
+        
         return (
-            <Carousel>
-                {slides}
-            </Carousel>
+            <div>
+                <div className="desktopSlider">
+                    <Carousel>
+                        {slides}
+                    </Carousel>
+                </div>
+                <div className="mobilePic">
+                </div>
+            </div>
         );
     }
 }

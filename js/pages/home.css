@@ -40,6 +40,13 @@
     width: 100%;
     height: 100%;
 }
+.mobileJumbo {
+    background-image: url(/public_html/media/images/sports-camps.jpg);
+    background-size: contain;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    padding-top: 55%;
+}
 .homeBody {
     background: white;
     padding: 15px;

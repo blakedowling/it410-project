@@ -7,6 +7,14 @@
 /********************************************
 	COLOURS
 ********************************************/
+.mobilePic {
+    background-image: url(/public_html/media/images/sports-camps.jpg);
+    background-size: contain;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    padding-top: 55%;
+    display: none;
+}
 .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
   -webkit-transition: all 0.25s ease-in;
   -moz-transition: all 0.25s ease-in;
@@ -65,8 +73,28 @@
 }
 .carousel button {
   outline: 0;
-  border: 0;
-  background: none;
+  /*border: 0;*/
+  padding: 0 1em;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  color: white;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.carousel button:hover {
+  color: #002d5d;
+  background-color: rgba(0,0,0,0.8);
+  cursor: pointer;
+  transition-timing-function: ease-in-out;
+}
+.carousel button a {
+  color: white;
+  font-size: 20pt;
+  display: inline-block;
+  padding: 5px 1em;
+  margin: 0 -1em;
+}
+.carousel button a:hover {
+  text-decoration: none;
 }
 .carousel img {
   width: 100%;
@@ -272,3 +300,11 @@
 /*.carousel:hover .slide .legend {*/
 /*  opacity: 1;*/
 /*}*/
+@media screen and (max-width: 767px) {
+    .mobilePic {
+        display: block;
+    }
+    .desktopSlider {
+        display: none;
+    }
+}
