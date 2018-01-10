@@ -66,7 +66,11 @@ export default class Calendar extends React.Component {
             link = 'camps/' + urlTitle + '/' + item.nid;
             // link = 'camps/' + item.nid;
             if(item.field_registration_url == '') {
-                register = <h5>Registration not open</h5>;
+                if(item.field_registration_opens_date != '') {
+                    register = <h5>Registration opens {item.field_registration_opens_date}</h5>;
+                } else {
+                    register = <h5>Registration not open</h5>;
+                }
             } else {
                 register = <h5><a href={item.field_registration_url}>Register</a></h5>;
             }

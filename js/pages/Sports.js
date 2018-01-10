@@ -39,7 +39,6 @@ export default class Sports extends React.Component {
         this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps/" + this.props.params.sportid)
             .then(function(response) {
                 const data = response.data[0];
-                console.log(data);
                 th.setState({
                     sport: data.name,
                     image: data.field_scimage

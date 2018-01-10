@@ -16,7 +16,6 @@ export default class Camps extends React.Component {
             price: '',
             body: '',
             registration_url: '',
-            sportID: '',
             image: ''
         };
     }
@@ -27,9 +26,10 @@ export default class Camps extends React.Component {
         title = title.replace(/\b[a-z]/g,function(f){return f.toUpperCase();}) + ' | BYU Sports Camps';
         document.title = title;
         var th = this;
-        var URL1 = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;
-        this.serverRequest = axios.get(URL1).then(function(response) {
+        var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;
+        this.serverRequest = axios.get(URL).then(function(response) {
             const data = response.data[0];
+            console.log(data);
             th.setState({
                 title: data.title,
                 when: data.field_event_date,
@@ -37,15 +37,7 @@ export default class Camps extends React.Component {
                 price: data.field_price,
                 body: data.body,
                 registration_url: data.field_registration_url,
-                sportID: data.field_sport
-            });
-            var URL2 = "https://byucougars.com/dl/feeds/sports-camps/" + th.state.sportID;
-            th.serverRequest = axios.get(URL2).then(function(response) {
-                th.setState({
-                    image: response.data[0].field_sport_camp_image
-                });
-            }).catch(function(error) {
-                console.log(error);
+                image: data.field_sport_camp_image
             });
         })
         .catch(function(error) {

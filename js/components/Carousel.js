@@ -12,7 +12,7 @@ export default class DemoCarousel extends Component {
     }
     
     componentDidMount() {
-        var URL = "https://byucougars.com/dl/feeds/scfront";
+        var URL = "https://byucougars.com/dl/feeds/scrank";
         var th = this;
         // console.log(this.props);
         this.serverRequest = axios.get(URL)
@@ -32,13 +32,13 @@ export default class DemoCarousel extends Component {
         var urlTitle;
         var alt;
         this.state.data.forEach(item => {
-            urlTitle = item.title.replace(/ /g, '-').toLowerCase();
-            link = 'camps/' + urlTitle + '/' + item.nid;
-            alt = 'BYU Sports Camps - ' + item.title;
+            urlTitle = item.name.replace(/ /g, '-').toLowerCase();
+            link = 'sports/' + urlTitle + '/' + item.tid;
+            alt = 'BYU Sports Camps - ' + item.name;
             slides.push(
                 <div key={item.nid}>
-                    <img src={item.field_single_use_photos} alt={alt}/>
-                    <Link to={link} className="legend">{item.field_slider_text}</Link>
+                    <img src={item.field_scimage} alt={alt}/>
+                    <Link to={link} className="legend">{item.name}</Link>
                 </div>
             );
         });
