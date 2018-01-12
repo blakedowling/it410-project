@@ -28,6 +28,18 @@ export default class DemoCarousel extends Component {
         });
     }
     render() {
+        const viewButton = {
+            border: '1px solid white',
+            background: 'none',
+            marginTop: '.25em',
+            padding: '0'
+        };
+        const viewA = {
+            fontSize: '14pt',
+            padding: '.3em 1em',
+            color: 'white',
+            textTransform: 'uppercase'
+        }
         var slides = [];
         var link;
         var urlTitle;
@@ -40,9 +52,9 @@ export default class DemoCarousel extends Component {
                 <div key={item.nid}>
                     <img src={item.field_scimage} alt={alt}/>
                     <div className="legend">
-                        <button>
-                            <Link to={link}>{item.name} Camps</Link>
+                        <button>{item.name}
                         </button>
+                        <button style={viewButton}><Link to={link} style={viewA}>View Camps</Link></button>
                     </div>
                 </div>
             );

@@ -73,7 +73,7 @@
 }
 .carousel button {
   outline: 0;
-  /*border: 0;*/
+  border: 0;
   padding: 0 1em;
   background-color: rgba(0,0,0,0.6);
   display: flex;
@@ -81,20 +81,20 @@
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .carousel button:hover {
-  color: #002d5d;
-  background-color: rgba(0,0,0,0.8);
-  cursor: pointer;
-  transition-timing-function: ease-in-out;
+  /*color: #002d5d;*/
+  /*background-color: rgba(0,0,0,0.8);*/
+  /*cursor: pointer;*/
+  /*transition-timing-function: ease-in-out;*/
 }
 .carousel button a {
-  color: white;
-  font-size: 20pt;
-  display: inline-block;
-  padding: 5px 1em;
-  margin: 0 -1em;
+  background: none;
+  /*transition: background-color 0.3s ease-in-out;*/
+  
 }
 .carousel button a:hover {
   text-decoration: none;
+  /*background-color: rgba(0,0,0,0.6);*/
+  /*transition-timing-function: ease-in-out;*/
 }
 .carousel img {
   width: 100%;
@@ -248,6 +248,10 @@
   padding: 10px;
   font-size: 24pt;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   /*opacity: 0.25;*/
   /*-webkit-transition: opacity 0.35s ease-in-out;*/
   /*-moz-transition: opacity 0.35s ease-in-out;*/

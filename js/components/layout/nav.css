@@ -96,7 +96,7 @@ body {
     justify-content: center;
 }
 .dropbtn:hover {
-    cursor: pointer;
+    cursor: default;
     text-decoration: none;
     /*color: white;*/
 }
@@ -202,7 +202,7 @@ a:focus {
 @media screen and (max-height: 479px) {
     .dropdownContent {
         max-height: 250px;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 }
 @media screen and (max-width: 850px) {

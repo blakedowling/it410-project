@@ -1,5 +1,5 @@
 import React from "react";
-import { IndexLink, Link } from "react-router";
+import { Link } from "react-router";
 import styles from './nav.css';
 import axios from 'axios';
 // import renderHTML from 'react-render-html';
@@ -96,7 +96,7 @@ export default class Nav extends React.Component {
       			<section className={ styles.dropdown }>
         			<li className={ styles.headerLeftItems + " " + moreClass }><span className={ styles.dropbtn }>More</span></li>
         			<article className={ styles.dropdownContent }>
-        			  <Link to="page/general-info/1282927" className={ styles.dropbtn }>General Info</Link>
+        			  <Link to="page/general-info/1282927">General Info</Link>
         			  <Link to="page/counselors/1282929">Counselors</Link>
       					<Link to="page/lodging/1282930">Lodging</Link>
       					<Link to="page/FAQ/1282931">FAQ</Link>
