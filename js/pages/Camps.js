@@ -12,7 +12,8 @@ export default class Camps extends React.Component {
         super(props);
         this.state = {
             title: '',
-            when: '',
+            event_date: '',
+            end_date: '',
             who: '',
             price: '',
             body: '',
@@ -35,7 +36,8 @@ export default class Camps extends React.Component {
             console.log(data);
             th.setState({
                 title: data.title,
-                when: data.field_event_date,
+                event_date: data.field_event_date,
+                end_date: data.field_end_date,
                 who: data.field_age_restriction,
                 price: data.field_price,
                 body: data.body,
@@ -53,18 +55,33 @@ export default class Camps extends React.Component {
     // }
     render() {
         const imageURL = 'url(' + this.state.image + ') no-repeat fixed center';
-        var padTop;
         var register;
         if(this.state.registration_url != '') {
             register = <button><a href={this.state.registration_url} target="_blank">Register</a></button>;
         } else {
             if(this.state.registration_date != '') {
                     register = <h3 className={styles.noRegistration + " text-center"}>Registration opens {this.state.registration_date}</h3>;
-            } else if(Date.parse(this.state.when) > Date.now()) {
+            } else if(Date.parse(this.state.end_date) > Date.now()) {
                 register = <h3 className={styles.noRegistration + " text-center"}>Registration not open</h3>;
             } else {
                 register = <h3 className={styles.noRegistration + " text-center"}>Registration for this camp is closed</h3>;
             }
+        }
+        var date;
+        var end_date;
+        if(this.state.end_date == '') {
+            date = <h6>{this.state.event_date}</h6>;
+        } else {
+            var start = this.state.event_date.split(',');
+            start = start[0];
+            // console.log(start);
+            if(this.state.event_date.substring(0,3) == this.state.end_date.substring(0,3)) {
+                end_date = this.state.end_date.substr(this.state.end_date.indexOf(' ')+1);
+            } else {
+                end_date = this.state.end_date;
+            }
+            console.log(end_date);
+            date = <h6>{start}-{end_date}</h6>;
         }
         
         return (
@@ -73,7 +90,7 @@ export default class Camps extends React.Component {
                     <div className={"container " + styles.campInfo}>
                         <h1 className={"text-center"}>{renderHTML(this.state.title)}</h1>
                         <div className={ styles.whenWhoPrice}>
-                            <div><h4>When:</h4><h6>{renderHTML(this.state.when)}</h6></div>
+                            <div><h4>When:</h4>{date}</div>
                             <div><h4>Who:</h4><h6>{this.state.who}</h6></div>
                             <div><h4>Price:</h4><h6>{this.state.price}</h6></div>
                         </div>

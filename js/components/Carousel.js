@@ -54,7 +54,9 @@ export default class DemoCarousel extends Component {
                     <div className="legend">
                         <button>{item.name}
                         </button>
-                        <button style={viewButton}><Link to={link} style={viewA}>View Camps</Link></button>
+                        <button style={viewButton}>
+                            <Link to={link} style={viewA}>View Camps</Link>
+                        </button>
                     </div>
                 </div>
             );

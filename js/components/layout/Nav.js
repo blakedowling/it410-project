@@ -95,7 +95,7 @@ export default class Nav extends React.Component {
       			<li className={ styles.headerLeftItems + " " + contactClass }><Link to="page/contact/1282928">Contact</Link></li>
       			<section className={ styles.dropdown }>
         			<li className={ styles.headerLeftItems + " " + moreClass }><span className={ styles.dropbtn }>More</span></li>
-        			<article className={ styles.dropdownContent + " " + styles.moreDropdown }>
+        			<article className={ styles.dropdownContent }>
         			  <Link to="page/general-info/1282927">General Info</Link>
         			  <Link to="page/counselors/1282929">Counselors</Link>
       					<Link to="page/lodging/1282930">Lodging</Link>

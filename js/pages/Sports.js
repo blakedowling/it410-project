@@ -32,7 +32,7 @@ export default class Sports extends React.Component {
                     data: response.data,
                     dataThere: true
                 });
-            // console.log(th.state.data);
+            console.log(th.state.data);
         }.bind(this))
         .catch(function(error) {
             console.log(error);
@@ -61,16 +61,33 @@ export default class Sports extends React.Component {
         var camps = [];
         var link;
         var urlTitle;
+        var date;
+        var end_date;
         if(this.state.dataThere) {
             if(this.state.data.length != 0) {
                 this.state.data.forEach(item => {
                     urlTitle = item.title.replace(/ /g, '-').toLowerCase();
                     link = 'camps/' + urlTitle + '/' + item.nid;
+                    
+                    if(item.field_end_date == '') {
+                        date = <h3>{item.field_event_date}</h3>;
+                    } else {
+                        var start = item.field_event_date.split(',');
+                        start = start[0];
+                        if(item.field_event_date.substring(0,3) == item.field_end_date.substring(0,3)) {
+                            end_date = item.field_end_date.substr(item.field_end_date.indexOf(' ')+1);
+                        } else {
+                            end_date = item.field_end_date;
+                        }
+                        console.log(end_date);
+                        date = <h3>{start}-{end_date}</h3>;
+                    }
+                    
                     camps.push(
                         <div key={item.nid} className={ "col-sm-12 col-md-6 col-lg-4 " + styles.individualCamp }>
                             <div>
                                 <h2><Link to={link}>{renderHTML(item.title)}</Link></h2>
-                                <h3>{renderHTML(item.field_event_date)}</h3>
+                                {date}
                                 <h3>{item.field_age_restriction}</h3>
                                 <h3>{item.field_price}</h3>
                                 <p className={styles.learnMoreButton}><Link to={link}>Learn More</Link></p>

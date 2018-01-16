@@ -62,6 +62,8 @@ export default class Calendar extends React.Component {
         var register;
         var link;
         var urlTitle;
+        var date;
+        var end_date;
         this.state.data.forEach(item => {
             urlTitle = item.title.replace(/ /g, '-').toLowerCase();
             link = 'camps/' + urlTitle + '/' + item.nid;
@@ -75,10 +77,27 @@ export default class Calendar extends React.Component {
             } else {
                 register = <h5><a href={item.field_registration_url}>Register</a></h5>;
             }
+            
+            // merges event_date and end_date depending on if the months are the same
+            // e.g. May 3-7 vs. May 29-June 2
+            if(item.field_end_date == '') {
+                date = <h5>{item.field_event_date}</h5>;
+            } else {
+                var start = item.field_event_date.split(',');
+                start = start[0];
+                if(item.field_event_date.substring(0,3) == item.field_end_date.substring(0,3)) {
+                    end_date = item.field_end_date.substr(item.field_end_date.indexOf(' ')+1);
+                } else {
+                    end_date = item.field_end_date;
+                }
+                console.log(end_date);
+                date = <h5>{start}-{end_date}</h5>;
+            }
+            
             camps.push(
                 <section key={item.nid} className={styles.row + " row"}>
                     <div className={styles.date + " col-sm-3"}>
-                        <h5>{item.field_event_date}</h5>
+                        {date}
                     </div>
                     <div className={"col-sm-6"}>
                         <h3 class={"text-center"}><Link to={link}>{renderHTML(item.title)}</Link></h3>
