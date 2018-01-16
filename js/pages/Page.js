@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./page.css";
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
+import YBA from "../components/YBA";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 // import { findDOMNode } from ‘react-dom’;
@@ -55,6 +56,7 @@ export default class Page extends React.Component {
                     </div>
                 </div>
                 <Equality/>
+                <YBA/>
                 <Ads/>
             </div>
         );

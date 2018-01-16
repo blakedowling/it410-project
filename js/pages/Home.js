@@ -6,7 +6,7 @@ import renderHTML from 'react-render-html';
 import DemoCarousel from "../components/Carousel";
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
-import $ from 'jquery';
+import YBA from "../components/YBA";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -46,7 +46,6 @@ export default class Home extends React.Component {
     var sports = [];
     var link;
     var urlTitle;
-    var jumbo;
     this.state.data.forEach(item => {
       urlTitle = item.name.replace(/ /g, '-').toLowerCase();
       link = 'sports/' + urlTitle + '/' + item.tid;
@@ -84,7 +83,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <DemoCarousel/>
-        <Ads/>
+        <YBA/>
         <div className={ styles.sportsDiv + ' container-fluid'}>
           <div className={"row " + styles.homeRow}>
             <div className={"col-md-12 col-lg-9"}>
@@ -99,6 +98,7 @@ export default class Home extends React.Component {
           </div>
         </div>
         <Equality/>
+        <Ads/>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import styles from "./calendar.css";
 import { Link } from 'react-router';
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
+import YBA from "../components/YBA";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 
@@ -119,6 +120,7 @@ export default class Calendar extends React.Component {
                     </div>
                 </div>
                 <Equality/>
+                <YBA/>
                 <Ads/>
             </div>
         );

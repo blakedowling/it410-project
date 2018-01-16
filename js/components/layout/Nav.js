@@ -86,7 +86,7 @@ export default class Nav extends React.Component {
       			<li className={ styles.headerLeftItems + " " + homeClass }><Link to="/"><img className={ styles.siteLogo }src="media/images/BYUlogo_stroke400.png" alt="BYU Logo"/></Link></li>
       			<section className={ styles.dropdown }>
           		<li className={ styles.headerLeftItems + " " + campClass }><span className={ styles.dropbtn }>Camps</span></li>
-          		<article className={ styles.dropdownContent }>
+          		<article className={ styles.dropdownContent + " " + styles.sportsDropdown }>
           		  {desktopSports}
       				</article>
       			</section>
@@ -95,7 +95,7 @@ export default class Nav extends React.Component {
       			<li className={ styles.headerLeftItems + " " + contactClass }><Link to="page/contact/1282928">Contact</Link></li>
       			<section className={ styles.dropdown }>
         			<li className={ styles.headerLeftItems + " " + moreClass }><span className={ styles.dropbtn }>More</span></li>
-        			<article className={ styles.dropdownContent }>
+        			<article className={ styles.dropdownContent + " " + styles.moreDropdown }>
         			  <Link to="page/general-info/1282927">General Info</Link>
         			  <Link to="page/counselors/1282929">Counselors</Link>
       					<Link to="page/lodging/1282930">Lodging</Link>

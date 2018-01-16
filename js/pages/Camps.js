@@ -4,6 +4,7 @@ import Equality from "../components/Equality";
 import Ads from "../components/Ads";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
+import YBA from "../components/YBA";
 
 
 export default class Camps extends React.Component {
@@ -81,6 +82,7 @@ export default class Camps extends React.Component {
                     </div>
                 </div>
                 <Equality/>
+                <YBA/>
                 <Ads/>
             </div>
         );

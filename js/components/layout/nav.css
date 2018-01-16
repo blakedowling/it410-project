@@ -194,13 +194,13 @@ a:focus {
     text-decoration: none;
 }
 @media screen and (max-height: 720px) {
-    .dropdownContent {
+    .dropdownContent.sportsDropdown {
         max-height: 400px;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 }
 @media screen and (max-height: 479px) {
-    .dropdownContent {
+    .dropdownContent.sportsDropdown {
         max-height: 250px;
         overflow-y: scroll;
     }

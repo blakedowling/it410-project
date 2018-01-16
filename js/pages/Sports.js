@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 // import DemoCarousel from "../components/Carousel";
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
+import YBA from "../components/YBA";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 
@@ -72,6 +73,7 @@ export default class Sports extends React.Component {
                                 <h3>{renderHTML(item.field_event_date)}</h3>
                                 <h3>{item.field_age_restriction}</h3>
                                 <h3>{item.field_price}</h3>
+                                <p className={styles.learnMoreButton}><Link to={link}>Learn More</Link></p>
                             </div>
                         </div>
                     );
@@ -94,7 +96,8 @@ export default class Sports extends React.Component {
                 <div>
                     <img className={ styles.campImg } src={this.state.image} alt={ this.state.sport } />
                 </div>
-                <div className={ "container-fluid" }>
+                <YBA/>
+                <div className={ "container-fluid " + styles.campsContainer }>
                     <div className={ styles.row + " row" }>
                         {camps}
                     </div>
