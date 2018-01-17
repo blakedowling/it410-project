@@ -7,6 +7,7 @@ import Sports from "./pages/Sports";
 import Camps from "./pages/Camps";
 import Calendar from "./pages/Calendar";
 import Page from "./pages/Page";
+import 'babel-polyfill';
 // import Settings from "./pages/Settings";
 
 const app = document.getElementById('app');

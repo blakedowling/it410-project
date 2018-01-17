@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./sports.css";
 import { Link } from 'react-router';
-// import DemoCarousel from "../components/Carousel";
 import Equality from "../components/Equality";
 import Ads from "../components/Ads";
 import YBA from "../components/YBA";
@@ -25,14 +24,12 @@ export default class Sports extends React.Component {
         document.title = title;
         var URL = "https://byucougars.com/dl/feeds/allcampspersport/" + this.props.params.sportid;
         var th = this;
-        // console.log(this.props);
         this.serverRequest = axios.get(URL)
             .then(function(response) {
                 th.setState({
                     data: response.data,
                     dataThere: true
                 });
-            console.log(th.state.data);
         }.bind(this))
         .catch(function(error) {
             console.log(error);
@@ -53,7 +50,6 @@ export default class Sports extends React.Component {
         this.mountOrUpdate();
     }
     componentWillReceiveProps(nextProps) {
-        // this.setState({ dataThere: false });
         this.mountOrUpdate();
     }
 
@@ -79,7 +75,6 @@ export default class Sports extends React.Component {
                         } else {
                             end_date = item.field_end_date;
                         }
-                        console.log(end_date);
                         date = <h3>{start}-{end_date}</h3>;
                     }
                     

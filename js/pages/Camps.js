@@ -33,7 +33,6 @@ export default class Camps extends React.Component {
         var URL = "https://byucougars.com/dl/feeds/camp/" + this.props.params.campid;
         this.serverRequest = axios.get(URL).then(function(response) {
             const data = response.data[0];
-            console.log(data);
             th.setState({
                 title: data.title,
                 event_date: data.field_event_date,
@@ -74,13 +73,11 @@ export default class Camps extends React.Component {
         } else {
             var start = this.state.event_date.split(',');
             start = start[0];
-            // console.log(start);
             if(this.state.event_date.substring(0,3) == this.state.end_date.substring(0,3)) {
                 end_date = this.state.end_date.substr(this.state.end_date.indexOf(' ')+1);
             } else {
                 end_date = this.state.end_date;
             }
-            console.log(end_date);
             date = <h6>{start}-{end_date}</h6>;
         }
         

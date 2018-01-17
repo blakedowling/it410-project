@@ -90,7 +90,6 @@ export default class Calendar extends React.Component {
                 } else {
                     end_date = item.field_end_date;
                 }
-                console.log(end_date);
                 date = <h5>{start}-{end_date}</h5>;
             }
             
