@@ -25,6 +25,12 @@ module.exports = {
       }
     ]
   },
+  // node: {
+  //   console: 'empty',
+  //   fs: 'empty',
+  //   net: 'empty',
+  //   tls: 'empty'
+  // },
   output: {
     path: __dirname,
     filename: "client.min.js"

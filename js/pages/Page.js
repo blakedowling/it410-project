@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./page.css";
-import Equality from "../components/Equality";
-import Ads from "../components/Ads";
-import YBA from "../components/YBA";
+import Spinner from "../components/Spinner";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 // import { findDOMNode } from ‘react-dom’;
@@ -13,6 +11,7 @@ export default class Page extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             title: '',
             body: ''
         };
@@ -25,17 +24,19 @@ export default class Page extends React.Component {
         document.title = title + ' | BYU Sports Camps';
         var th = this;
         var URL = "https://byucougars.com/dl/feeds/sc-basic-page/" + params.pageid;
-
-        this.serverRequest = axios.get(URL)
-            .then(function(response) {
-                const data = response.data[0];
-                th.setState({
-                    title: data.title,
-                    body: data.body
+        this.setState({ loading: true }, () => {
+            this.serverRequest = axios.get(URL)
+                .then(function(response) {
+                    const data = response.data[0];
+                    th.setState({
+                        loading: false,
+                        title: data.title,
+                        body: data.body
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
             });
-        })
-        .catch(function(error) {
-            console.log(error);
         });
     }
     componentDidMount() {
@@ -51,13 +52,13 @@ export default class Page extends React.Component {
             <div>
                 <div className={styles.pageBanner}>
                     <div className={"container " + styles.pageInfo}>
-                        <h1 className={"text-center"}>{ this.state.title }</h1>
+                        <h1 className={"text-center " + styles.pageTitle}>{ this.state.title }</h1>
+                        {this.state.loading && 
+                            <Spinner/>
+                        }
                         <div>{renderHTML(this.state.body)}</div>
                     </div>
                 </div>
-                <Equality/>
-                <YBA/>
-                <Ads/>
             </div>
         );
     }

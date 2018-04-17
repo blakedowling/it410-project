@@ -13,10 +13,14 @@
     padding-bottom: 5px;
 }
 
-.pageInfo h1 {
+.pageTitle {
     border-bottom: 1px solid #dbddd3;
     padding: 10px 0;
     color: #002d5d;
+    height: 65px;
+}
+.spinner {
+    color: black;
 }
 @media screen and (max-width: 767px) {
     .pageBanner {

@@ -1,4 +1,8 @@
 .campBanner {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     position: relative;
     padding-top: 120px;
     padding-bottom: 45px;
@@ -14,24 +18,21 @@
     padding: 10px 0;
     color: #002d5d;
 }
-.campInfo button {
-    width: 33.4%;
-    margin-left: 33.3%;
-    margin-top: 15px;
-    font-size: 18pt;
-    padding: .4em 0;
-    background: #002d5d;
-    color: white;
-}
-.campInfo button a {
+.campInfo .registerButton {
     display: inline-block;
-    width: 100%;
+    width: 33.4%;
     padding: .4em 0;
     margin: -.4em 0;
+    background: #002d5d;
     color: white;
     transition: background-color 0.3s ease-in-out;
+    margin-left: 33.3%;
+    margin-top: 15px;
+    font-size: 20pt;
+    text-align: center;
+    margin-bottom: 0;
 }
-.campInfo button a:hover {
+.campInfo .registerButton:hover {
     cursor: pointer;
     text-decoration: none;
     background: #003da7;
@@ -100,9 +101,9 @@
 /*    text-decoration: none;*/
 /*}*/
 @media screen and (max-width: 991px) {
-    .campInfo button {
-        width: 225px;
-        margin-left: calc(50% - 100px);
+    .campInfo a {
+        width: 230px;
+        margin-left: calc(50% - 115px);
     }
 }
 @media screen and (max-width: 767px) {

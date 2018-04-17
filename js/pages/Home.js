@@ -4,9 +4,6 @@ import { Link } from "react-router";
 import axios from 'axios';
 import renderHTML from 'react-render-html';
 import DemoCarousel from "../components/Carousel";
-import Equality from "../components/Equality";
-import Ads from "../components/Ads";
-import YBA from "../components/YBA";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -18,87 +15,61 @@ export default class Home extends React.Component {
   }
       
   componentDidMount() {
-    var th = this;
-    this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sports-camps")
-      .then(function(response) {
-        th.setState({
-          data: response.data
-      });
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-    this.serverRequest = axios.get("https://byucougars.com/dl/feeds/sc-basic-page/1282948")
-      .then(function(response) {
-        const data = response.data[0];
-        th.setState({
-          body: data.body
-        });
-        // console.log(th.state.body);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    document.title = "Home";
   }
   
   
   render() {
-    var sports = [];
-    var link;
-    var urlTitle;
-    this.state.data.forEach(item => {
-      urlTitle = item.name.replace(/ /g, '-').toLowerCase();
-      link = 'sports/' + urlTitle + '/' + item.tid;
-      sports.push(
-        <Link key={item.tid} to={link} className={"col-md-6 col-xs-12"}>{item.name}</Link>
-      );
-    });
-    // $(document).ready(function() {
-    //   console.log($(window).width());
-    //   if($(window).width() > 767) {
-    //     console.log('greater than 767');
-    //     jumbo = <DemoCarousel/>;
-    //     console.log(jumbo);
-    //   } else {
-    //     console.log('less than 767');
-    //     jumbo = <div className="mobileJumbo"></div>;
-    //     console.log(jumbo);
-    //   }
-    // });
-    
-    // <div className={ styles.videoLoopContainer }>
-    //       <video autoPlay loop muted preload webkit-playsinline="true" className={ styles.homeVideo }>
-    //         <source src="media/videos/SportsCamps_WIDE.mp4" type="video/mp4"/>
-    //         Your browser does not support the video tag
-    //       </video>
-          
-    //       <div className={ styles.videoContent }>
-    //         <h1>Registration is now open for all 2018 camps</h1>
-    //       </div>
-    //     </div>
-    
-    // <div className={ "container " + styles.homeBody }>
-    //   { renderHTML(this.state.body) }
-    // </div>
+    const headline = {
+        // fontSize: '20pt',
+        // fontFamily: 'serif',
+        marginTop: '30px',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        lineHeight: '1.5em'
+    };
+    const testimonialsContainer = {
+      margin: '30px 0'
+    };
+    const testimonials = {
+      display: 'flex',
+      justifyContent: 'space-between'
+    };
+    const testimonial = {
+      width: '30%',
+      margin: '15px',
+      padding: '15px 15px 0',
+      background: 'white',
+      boxShadow: '0px 0px 2px #333',
+      borderRadius: '4px'
+    };
+
+
     return (
       <div>
         <DemoCarousel/>
-        <YBA/>
-        <div className={ styles.sportsDiv + ' container-fluid'}>
-          <div className={"row " + styles.homeRow}>
-            <div className={"col-md-12 col-lg-9"}>
-              <div className={"row " + styles.sportSection}>
-                {sports}
+        <div class="container">
+          <h1 style={headline} className={styles.headline}>
+            No more overspending on wedding photography.<br/>
+            List the photos you want and let your friends do the snapping!
+          </h1>
+          <div style={testimonialsContainer}>
+            <div style={testimonials}>
+              <div style={testimonial}>
+                <blockquote><i>"I saved hundreds of dollars on my wedding by using Wedding Snaps!  So glad I found it before booking a photographer."</i></blockquote>
               </div>
-            </div>
-            <div className={"col-md-12 col-lg-3 " + styles.announcements}>
-              <h3 className={"text-center"}>Announcements</h3>
-              {renderHTML(this.state.body)}
+              
+              <div style={testimonial}>
+                <blockquote><i>"This is such a great idea! I wish Wedding Snaps was around when I got married!"</i></blockquote>
+              </div>
+              
+              <div style={testimonial}>
+                <blockquote><i>"I'd recommend this to all of my friends and family!  My wedding was cheap and the pictures turned out just as I wanted them to!"</i></blockquote>
+              </div>
             </div>
           </div>
         </div>
-        <Equality/>
-        <Ads/>
       </div>
     );
   }

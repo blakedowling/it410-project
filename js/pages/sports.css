@@ -12,6 +12,21 @@
 }
 .row {
     margin: 0 10%;
+    /*justify-content: center;*/
+}
+.letter {
+    margin-top: 15px;
+}
+.letter > div {
+    background: white;
+    padding-bottom: 15px;
+    box-shadow: 0px 0px 2px #333;
+    height: 100%;
+    text-align: left;
+    padding: 10px;
+}
+.letter h3 {
+    margin-left: 0;
 }
 .individualCamp h2 {
     width: 100%;

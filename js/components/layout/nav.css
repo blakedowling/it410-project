@@ -61,7 +61,7 @@ body {
 }
 
 .headerLeftItems.active a, .headerLeftItems.active span {
-    background-color: #002d5d;
+    background-color: #83BBEA;
     color: white;
 }
 .headerLeftItems.active a:hover {
@@ -140,7 +140,8 @@ body {
 }
 .logos a {
     display: flex;
-    padding-right: .5em;
+    padding-right: 1em;
+    color: black;
 }
 .topNavbar img {
     height: 40px;
@@ -154,13 +155,13 @@ body {
     display: none;
 }
 .mobileNav {
-    background: #002d5d;
+    background: #83BBEA;
     border-bottom: 1px solid black;
 }
-.navbar-inverse .navbar-toggler {
+.mobileNav button.hamburger {
     border-color: rgba(255,255,255,.5);
 }
-.navbar-inverse .navbar-toggler:hover {
+.hamburger:hover {
     cursor: pointer;
 }
 .mobileNavUl {
@@ -210,13 +211,5 @@ a:focus {
         padding-left: .8em;
         padding-right: .8em;
         font-size: 11pt;
-    }
-}
-@media screen and (max-width: 767px) {
-    .topNavbar {
-        display: none;
-    }
-    .posFT {
-        display: block;
     }
 }
