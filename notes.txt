@@ -1,0 +1,37 @@
+Final page - create events/:id
+--see the event details and all the pictures
+--ability to upload pictures and see them immediately
+----make a function that is triggered on upload, which should make a post and a get
+
+
+Requirements/Grading Rubric
+-Build a dynamic front end web application using HTML, CSS, and JavaScript.
+-Write a custom server using NodeJS.
+15% - Use a database (NoSQL and/or SQL are allowed); your app should read from and write to the db
+---DONE
+---still need to add ability to
+-----Create events
+-----Add images to events
+15% - You must have a REST endpoint for making a request that writes to the database and you must have a REST endpoint for making a request that reads from the database. (Show some code.)
+---questionable - check with James about this
+15% - Must manage user sessions; users must be able to create and use a login.
+---DONE
+15% - Dynamic pages; you must have at least one front end page that has significant updates via AJAX calls. For example, a simple message that shows "Save Completed" after saving to the database does not constitute a significant update. A significant update would include a chat interface, single page app routing, multiple dynamic screen updates based on user interaction, etc. (Show through demonstration.)
+---still need to do
+15% - The final project should be polished. It must look and act like a finished web application.
+---work to be done still
+15% - Project scope: don't make your project too small
+---DONE
+5% - Attend all presentations
+---will be done
+5% - Share with the class the most rewarding part and the most challenging part of the project.
+---will be done
+
+
+
+Pages
+-Home (DONE)
+-Create Event (DONE)
+-Event/:name
+-Calendar (DONE)
+-Account/Login (DONE)

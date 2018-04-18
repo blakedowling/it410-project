@@ -22,15 +22,16 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]',
         include: __dirname
-      }
+      },
+      {test: /\.json$/, loader: 'json'}
     ]
   },
-  // node: {
-  //   console: 'empty',
-  //   fs: 'empty',
-  //   net: 'empty',
-  //   tls: 'empty'
-  // },
+  node: {
+    console: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   output: {
     path: __dirname,
     filename: "client.min.js"

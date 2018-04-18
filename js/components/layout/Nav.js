@@ -42,16 +42,16 @@ export default class Nav extends React.Component {
   render() {
     const { location } = this.props;
     const homeClass = location.pathname === "/" ? styles.active : "";
-    const calendarClass = location.pathname.match(/^\/calendar/) ? styles.active : "";
-    const createClass = location.pathname.match(/^\/create/) || location.pathname.match(/^\/camp/) ? styles.active : "";
+    const calendarClass = location.pathname.match(/^\/events\/calendar/) ? styles.active : "";
+    const createClass = location.pathname.match(/^\/events\/create/) ? styles.active : "";
 
     return (
       <div>
         <nav className={ styles.topNavbar }>
           <ul>
       			<li className={ styles.headerLeftItems + " " + homeClass }><Link to="/">Home</Link></li>
-      			<li className={ styles.headerLeftItems + " " + createClass }><Link to="create">Create Event</Link></li>
-      			<li className={ styles.headerLeftItems + " " + calendarClass }><Link to="calendar">Event Calendar</Link></li>
+      			<li className={ styles.headerLeftItems + " " + createClass }><Link to="events/create">Create Event</Link></li>
+      			<li className={ styles.headerLeftItems + " " + calendarClass }><Link to="events/calendar">Events</Link></li>
       		</ul>
       		
       		<div className={ styles.logos }>

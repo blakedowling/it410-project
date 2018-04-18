@@ -4,6 +4,15 @@ var session = require('express-session');
 const app = express();
 const bodyParser = require('body-parser');
 var mysql = require('mysql');
+let router = express.Router();
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.IP);
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -20,6 +29,7 @@ var connection = mysql.createConnection({
 
 app.use(session({secret: 'ssshhhhh'}));
 app.use(bodyParser.json());
+router.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/',function(req,res){
@@ -98,8 +108,22 @@ app.post('/createEvent', function(req, res) {
     });
 });
 
-// app.get('/users', function(req, res) {
-//     connection.query
-// });
+app.get('/events', function(req, res) {
+    connection.query("SELECT * FROM Event;", function (err, rows, fields) {
+        if (err) throw err;
+        console.log(rows);
+        // res.send(rows);
+        
+        res.send(JSON.stringify(rows));
+    });
+});
+
+app.get('/event/:id', function(req, res) {
+    connection.query("SELECT * FROM Event WHERE EventID = " + req.params.id + ";", function(err, rows, fields) {
+        if (err) throw err;
+        console.log(rows);
+        res.send(JSON.stringify(rows[0]));
+    });
+});
 
 app.listen(process.env.PORT, process.env.IP);
