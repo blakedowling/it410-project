@@ -27,7 +27,11 @@ var connection = mysql.createConnection({
 
 // app.use(express.static(__dirname));
 
-app.use(session({secret: 'ssshhhhh'}));
+app.use(session({
+    secret: 'ssshhhhh',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(bodyParser.json());
 router.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -102,7 +106,9 @@ app.post('/createEvent', function(req, res) {
             if (err) {
                 throw err;
             } else {
-                res.redirect('/#calendar');
+                // res.send(rows);
+                var eventID = rows.insertId;
+                res.redirect('/#event/' + eventID);
             }
         });
     });
@@ -123,6 +129,26 @@ app.get('/event/:id', function(req, res) {
         if (err) throw err;
         console.log(rows);
         res.send(JSON.stringify(rows[0]));
+    });
+});
+
+app.get('/images/:eventid', function(req, res) {
+    connection.query("SELECT * FROM Image WHERE EventID = " + req.params.eventid + ";", function(err, rows, fields) {
+        if (err) throw err;
+        console.log("Get images hit and it results in " + rows);
+        res.send(JSON.stringify(rows));
+    });
+});
+// function update() {
+//     var pics = document.querySelector('section');
+//     pics.innerHTML = 'HELLO!';
+// }
+app.post('/image', function(req, res) {
+    connection.query("INSERT INTO Image (Name, Filename, EventID) VALUES ('" + req.body.name + "','" + req.body.pic + "'," + req.body.id + ");", function(err, rows, fields) {
+        if (err) throw err;
+        console.log("post image hit and it results in " + rows);
+        // update();
+        // res.send(JSON.stringify(rows));
     });
 });
 

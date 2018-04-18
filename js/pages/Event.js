@@ -14,7 +14,7 @@ export default class Event extends React.Component {
             date: '',
             venue: '',
             body: '',
-            image: '',
+            images: [],
         };
     }
     
@@ -37,6 +37,27 @@ export default class Event extends React.Component {
         .catch(function(error) {
             console.log(error);
         });
+        
+        var imagesURL = "/images/" + this.props.params.id;
+        this.serverRequest = axios.get(imagesURL).then(function(response) {
+            console.log(response.data);
+            th.setState({
+                images: response.data,
+            });
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
+    
+    reload() {
+        var th = this;
+        console.log('image submitted');
+        this.serverRequest = axios.get('/images/'+this.props.params.id).then(function(response) {
+            th.setState({
+                images: response.data,
+            });
+        });
     }
     
     
@@ -52,9 +73,16 @@ export default class Event extends React.Component {
         var day = newDate.getDate();
         var year = newDate.getFullYear();
         var finalDate = month + " " + day + ", " + year;
+        var images= [];
         
-        
-            
+        this.state.images.forEach(item => {
+            images.push(
+                <div>
+                    <h4>{item.Name}</h4>
+                    <img alt={item.Name} src={item.Filename}/>
+                </div>
+            );
+        });
         
         return (
             <div>
@@ -65,6 +93,17 @@ export default class Event extends React.Component {
                             <div><h4>When:</h4>{finalDate}</div>
                             <div><h4>Where:</h4><h6>{this.state.venue}</h6></div>
                         </div>
+                        <section>
+                            {images}
+                        </section>
+                        <h3>Add new image</h3>
+                        <form method="post" action="/image">
+                            <input type="hidden" name="id" value={this.props.params.id} />
+                            Image title:<br/>
+                            <input type="text" name="name" placeholder="Image title"/><br/>
+                            <input type="file" name="pic" accept="image/*"/><br/>
+                            <input type="submit" onclick={this.reload.bind(this)}/>
+                        </form>
                     </div>
                 </div>
             </div>
